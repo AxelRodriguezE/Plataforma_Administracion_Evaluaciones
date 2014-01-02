@@ -17,7 +17,7 @@ class academico_model extends CI_Model
 	
 	public function mostrar()
 	{
-		$query = $this->db->order_by('rut_academico', 'asc')->get('academico');
+		$query = $this->db->order_by('id_academico', 'asc')->get('academico');
 		return $query->result();
 	}
 	
@@ -36,7 +36,7 @@ class academico_model extends CI_Model
 
 	public function eliminar($id)
         {
-            if($this->db->delete('academico',array('id_academico'=>$id )))
+            if($this->db->delete('academico', array('id_academico'=>$id)))
                 return true;
             else
                 return false;

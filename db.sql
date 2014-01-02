@@ -21,6 +21,7 @@ CREATE TABLE academico
 	-- El identificador del académico sera su RUT sin guión, sin digito verificador.
 	id_academico serial NOT NULL UNIQUE,
 	nombre_academico varchar(45) DEFAULT 'NN' NOT NULL,
+	apellidos_academico varchar(25) NOT NULL,
 	rut_academico int NOT NULL UNIQUE,
 	PRIMARY KEY (id_academico)
 ) WITHOUT OIDS;
