@@ -35,6 +35,42 @@ class evaluacion extends CI_Controller {
         
     }
     
+        public function editar($id = NULL)
+	{
+            $this->load->model('evaluacion_model');
+            if($this->input->post())
+            {
+                $evaluacion= array(
+                    'nombre_evaluacion' => $this->input->post('nombre', true),
+                    'fecha_evaluacion' => $this->input->post('fecha', true),
+                    'hora_evaluacion' => $this->input->post('hora', true),
+                    'ponderacion_evaluacion' => $this->input->post('ponderacion', true),
+                    'observacion_evaluacion' => $this->input->post('observacion', true),
+                    'tipo_evaluacion' => $this->input->post('tipo', true),
+                    'asignatura_evaluacion' => $this->input->post('asignatura', true),
+                    'academico_evaluacion' => $this->input->post('academico', true)
+            );
+                if($this->evaluacion_model->editar($this->input->post('id', true), $evaluacion))
+                    redirect('evaluacion/mostrarEvaluacion');
+                else
+                    $this->load->view('error');
+            }
+            else
+            {
+                $query = $this->evaluacion_model->getEvaluacion($id);
+                $query_asignatura = $this->evaluacion_model->mostrar_asignatura();
+                $query_academico = $this->evaluacion_model->mostrar_academico();
+                $query_tipo = $this->evaluacion_model->mostrar_tipo();
+		if($query){
+                    $this->load->view('templates/head');
+                    $this->load->view('academico/editar_evaluacion', compact('query', 'id', 'query_asignatura', 'query_academico','query_tipo'));
+                    $this->load->view('templates/footer');
+                }
+		else
+                    $this->load->view('error');
+            }
+        }
+    
     public function mostrarEvaluacion()
     {       
         $this->load->model('evaluacion_model');
@@ -43,6 +79,8 @@ class evaluacion extends CI_Controller {
 	$this->load->view('academico/evaluaciones', compact("query"));
 	$this->load->view('templates/footer');
     }
+    
+
     
     public function examinarEvaluacion($id = NULL)
     {
