@@ -3,9 +3,9 @@
 
 DROP TABLE IF EXISTS evaluacion_contenido;
 DROP TABLE IF EXISTS evaluacion;
-DROP TABLE IF EXISTS pauta;
 DROP TABLE IF EXISTS documento;
 DROP TABLE IF EXISTS contenido;
+DROP TABLE IF EXISTS pauta;
 DROP TABLE IF EXISTS asignatura;
 DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS academico;
@@ -46,7 +46,7 @@ CREATE TABLE contenido
 	id_contenido serial NOT NULL UNIQUE,
 	nombre_contenido varchar(45) NOT NULL,
 	-- Será el codigo de la asignatura.
-	asignatura_contenido int NOT NULL UNIQUE,
+	asignatura_contenido int NOT NULL,
 	PRIMARY KEY (id_contenido)
 ) WITHOUT OIDS;
 
@@ -57,7 +57,7 @@ CREATE TABLE pauta
 	nombre_pauta varchar(45) NOT NULL,
 	archivo_pauta text NOT NULL,
 	-- Será el codigo de la asignatura.
-	asignatura_pauta int NOT NULL UNIQUE,
+	asignatura_pauta int NOT NULL,
 	PRIMARY KEY (id_pauta)
 ) WITHOUT OIDS;
 
@@ -74,18 +74,29 @@ CREATE TABLE asignatura
 (
 	-- Será el codigo de la asignatura.
 	id_asignatura serial NOT NULL UNIQUE,
-	codigo_asignatura varchar(20) NOT NULL UNIQUE,
+	codigo_asignatura varchar(20) NOT NULL,
+	seccion_asignatura int NOT NULL,
 	nombre_asignatura varchar(45) NOT NULL,
 	-- El identificador del académico sera su RUT sin guión, sin digito verificador.
-	academico_asignatura int NOT NULL UNIQUE,
+	academico_asignatura int NOT NULL,
 	PRIMARY KEY (id_asignatura)
 ) WITHOUT OIDS;
 
 
 CREATE TABLE evaluacion_contenido
 (
-	id_contenido int NOT NULL UNIQUE,
-	id_evaluacion int NOT NULL UNIQUE
+	id_contenido int NOT NULL,
+	id_evaluacion int NOT NULL
+) WITHOUT OIDS;
+
+
+CREATE TABLE documento
+(
+	id_documento serial NOT NULL UNIQUE,
+	nombre_documento varchar(25) DEFAULT 'documento' NOT NULL,
+	archivo_documento text NOT NULL,
+	contenido_documento int NOT NULL,
+	PRIMARY KEY (id_documento)
 ) WITHOUT OIDS;
 
 
@@ -100,23 +111,13 @@ CREATE TABLE evaluacion
 	ponderacion_evaluacion int,
 	-- Observación con respecto a la evaluación.
 	observacion_evaluacion varchar(200),
-	tipo_evaluacion int NOT NULL UNIQUE,
+	tipo_evaluacion int NOT NULL,
 	-- Será el codigo de la asignatura.
-	asignatura_evaluacion int NOT NULL UNIQUE,
+	asignatura_evaluacion int NOT NULL,
 	-- El identificador del académico sera su RUT sin guión, sin digito verificador.
-	academico_evaluacion int NOT NULL UNIQUE,
-	pauta_evaluacion int UNIQUE,
+	academico_evaluacion int NOT NULL,
+	pauta_evaluacion int,
 	PRIMARY KEY (id_evaluacion)
-) WITHOUT OIDS;
-
-
-CREATE TABLE documento
-(
-	id_documento serial NOT NULL UNIQUE,
-	nombre_documento varchar(25) DEFAULT 'documento' NOT NULL,
-	archivo_documento text NOT NULL,
-	contenido_documento int NOT NULL UNIQUE,
-	PRIMARY KEY (id_documento)
 ) WITHOUT OIDS;
 
 
@@ -147,16 +148,16 @@ ALTER TABLE usuario
 ;
 
 
-ALTER TABLE documento
-	ADD FOREIGN KEY (contenido_documento)
+ALTER TABLE evaluacion_contenido
+	ADD FOREIGN KEY (id_contenido)
 	REFERENCES contenido (id_contenido)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
 
 
-ALTER TABLE evaluacion_contenido
-	ADD FOREIGN KEY (id_contenido)
+ALTER TABLE documento
+	ADD FOREIGN KEY (contenido_documento)
 	REFERENCES contenido (id_contenido)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -179,14 +180,6 @@ ALTER TABLE evaluacion
 ;
 
 
-ALTER TABLE pauta
-	ADD FOREIGN KEY (asignatura_pauta)
-	REFERENCES asignatura (id_asignatura)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
 ALTER TABLE contenido
 	ADD FOREIGN KEY (asignatura_contenido)
 	REFERENCES asignatura (id_asignatura)
@@ -197,6 +190,14 @@ ALTER TABLE contenido
 
 ALTER TABLE evaluacion
 	ADD FOREIGN KEY (asignatura_evaluacion)
+	REFERENCES asignatura (id_asignatura)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE pauta
+	ADD FOREIGN KEY (asignatura_pauta)
 	REFERENCES asignatura (id_asignatura)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT

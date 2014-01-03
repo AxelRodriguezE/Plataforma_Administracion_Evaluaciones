@@ -8,7 +8,7 @@ class academico extends CI_Controller {
 		$this->load->model('academico_model');
 		$query = $this->academico_model->mostrar();
 		$this->load->view('templates/head', compact('data'));
-		$this->load->view('academico/index', compact("query"));
+		$this->load->view('administrativo/academicos', compact("query"));
 		$this->load->view('templates/footer');
         }
 	
@@ -29,7 +29,7 @@ class academico extends CI_Controller {
             else
             {
                 $this->load->view('templates/head');
-                $this->load->view('academico/nueva');
+                $this->load->view('administrativo/nuevo_academico');
                 $this->load->view('templates/footer');   
             }
 	}
@@ -47,18 +47,18 @@ class academico extends CI_Controller {
                 if($this->academico_model->editar($this->input->post('id', true), $academico))
                     redirect('academico');
                 else
-                    $this->load->view('academico/error');
+                    $this->load->view('error');
             }
             else
             {
                 $query = $this->academico_model->getAcademico($id);
 		if($query){
                     $this->load->view('templates/head');
-                    $this->load->view('academico/editar', compact('query', 'id'));
+                    $this->load->view('administrativo/editar_academico', compact('query', 'id'));
                     $this->load->view('templates/footer');
                 }
 		else
-                    $this->load->view('academico/error');
+                    $this->load->view('error');
             }
             
 //            $saludar = 'Holaaa axel';

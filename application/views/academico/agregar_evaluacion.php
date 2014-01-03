@@ -8,13 +8,13 @@
                 'class' =>'form-control'
             );
             $fecha = array(
-                'type' => 'text',
+                'type' => 'date',
                 'id' => 'fecha',
                 'name' => 'fecha',
                 'class' => 'form-control'
             );
             $hora = array(
-                'type' => 'text',
+                'type' => 'time',
                 'id' => 'hora',
                 'name' => 'hora',
                 'class' =>'form-control'
@@ -36,7 +36,7 @@
                 'class' => 'btn btn-primary',
                 'value' => 'Agregar'
             );
-            echo form_open(base_url('/index.php/academico/agregar_evaluacion'));
+            echo form_open(base_url('/index.php/evaluacion/agregar'));
             echo form_fieldset('Nueva Evaluación');
 //                echo 'Creando una nueva evaluación para:';
 //                echo "<br>";

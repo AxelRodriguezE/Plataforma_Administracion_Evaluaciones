@@ -14,12 +14,14 @@ class evaluacion_model extends CI_Model
 		else
 			return false;
 	}
-        
+
         public function mostrar_tipo()
         {
                 $query_tipo = $this->db->SELECT('*')->FROM('tipo_evaluacion')->get();
                 return $query_tipo->result();
         }
+        
+        
         
 //        public function getAcademico_evaluacion($id)
 //        {
@@ -44,15 +46,16 @@ class evaluacion_model extends CI_Model
                 $query_academico = $this->db->SELECT('*')->FROM('academico')->get();
                 return $query_academico->result();
         }
-  
 
-
-//	public function mostrar()
-//	{
-//		$query = $this->db->order_by('id_academico', 'asc')->get('academico');
-//		return $query->result();
-//	}
-//	
+	public function mostrar()
+	{
+		$query = $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->get();
+                return $query->result();
+	}
+        
+        
+        
+        
 //	public function editar($id, $data)
 //	{
 //		if($this->db->where('id_academico', $id)->update('academico', $data))
@@ -60,17 +63,44 @@ class evaluacion_model extends CI_Model
 //		else
 //			return false;
 //	}
-//	
-//	public function getAcademico($id)
-//	{
-//		return $this->db->select('*')->from('academico')->where('id_academico', $id)->get()->row();
-//	}
-//
-//	public function eliminar($id)
-//        {
-//            if($this->db->delete('academico', array('id_academico'=>$id)))
-//                return true;
-//            else
-//                return false;
-//        }
+	
+	public function getEvaluacion($id)
+	{
+            return $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->where('id_evaluacion', $id)->get()->row();
+	}
+
+	public function eliminar($id)
+        {
+            if($this->db->delete('evaluacion', array('id_evaluacion'=>$id)))
+                return true;
+            else
+                return false;
+        }
+        
+        public function getIDPauta()
+        {
+             return $this->db->select('MAX(id_pauta) as id_pauta')->from('pauta')->get()->row();
+        }
+        
+        public function insertar_pauta($new_pauta)
+        {
+            if($this->db->insert('pauta', $new_pauta))
+			return true;
+		else
+			return false;
+        }
+        
+        public function ingresar_pauta_evaluacion($id_evaluacion, $id_pauta)
+        {
+            $data = array(
+               'pauta_evaluacion' => $id_pauta,
+            );
+
+            $this->db->where('id_evaluacion', $id_evaluacion);
+            if($this->db->UPDATE('evaluacion', $data))
+			return true;
+		else
+			return false;
+        }
+         
 }
