@@ -92,7 +92,6 @@
                 echo form_input($ponderacion);
                 echo form_label('Observaciones');
                 echo form_input($observacion);
-                
                 echo form_label('');
                 echo "<br>";
                 echo form_submit($button);

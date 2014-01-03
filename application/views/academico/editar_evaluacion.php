@@ -56,7 +56,7 @@
 echo form_open(base_url('/index.php/evaluacion/editar'));
             echo form_fieldset('Editar Evaluación');
                 echo form_label('Academico');
-                
+                //Desplegar menu con los academicos de la escuela de informatica (en el sistema)...
                 $datos_academico = array(
                     " " => "Seleccione el Academico"
                     );
@@ -69,6 +69,7 @@ echo form_open(base_url('/index.php/evaluacion/editar'));
                 
                 echo form_label('Asignatura');
                 
+                //Desplegar menu con las asignaturas del sistema...
                 $datos_asignatura = array(
                     " " => "Seleccione la Asignatura"
                 );
@@ -78,14 +79,14 @@ echo form_open(base_url('/index.php/evaluacion/editar'));
                 echo "<br>";
                 echo form_dropdown('asignatura',  $datos_asignatura);
                 echo "<br>";
-
-
                 echo form_label('Titulo:');
                 echo form_input($nombre);
                 echo form_label('Fecha:');
                 echo form_input($fecha);
                 echo form_label('Hora:');
                 echo form_input($hora);
+                
+                //Desplegar menu con los tipos de evaluacion existentes en el sistema...
                 echo form_label('Tipo de evaluacion');
                                 
                 $datos_tipo = array(
@@ -101,7 +102,6 @@ echo form_open(base_url('/index.php/evaluacion/editar'));
                 echo form_input($ponderacion);
                 echo form_label('Observaciones');
                 echo form_input($observacion);
-                
                 echo form_label('');
                 echo "<br>";
                 echo form_input($id);

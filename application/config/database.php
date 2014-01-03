@@ -48,10 +48,11 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'postgres';
-$db['default']['password'] = 'nicolas1';
-$db['default']['database'] = 'postgres';
+$db['default']['hostname'] = '146.83.181.4';
+$db['default']['username'] = 'grupo06';
+$db['default']['password'] = 'grupo06';
+$db['default']['database'] = 'iswdb';
+$db['default']['port'] = 6432;
 $db['default']['dbdriver'] = 'postgre';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

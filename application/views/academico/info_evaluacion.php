@@ -62,9 +62,9 @@
             }
             else
             {
-                echo 'Link Pauta de evaluacion: '; echo $query->pauta_evaluacion;
+                echo 'Link Pauta de evaluacion: '; echo $query->archivo_pauta;
             }
-
+            echo '<br>';
             echo 'Observaciones:';echo '<br>'; ?>
             <p class="text-danger"><?php echo $query->observacion_evaluacion; ?></p>
     </div>

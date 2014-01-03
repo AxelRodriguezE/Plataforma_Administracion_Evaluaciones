@@ -85,8 +85,7 @@ class evaluacion extends CI_Controller {
     public function examinarEvaluacion($id = NULL)
     {
         $this->load->model('evaluacion_model');
-        $query = $this->evaluacion_model->getEvaluacion($id);
-        $query_cp = $this->evaluacion_model->getEvaluacion_cp($id);
+        $query = $this->evaluacion_model->getEvaluacion_cp($id);
         if($query)
         {
             $this->load->view('templates/head');
@@ -95,7 +94,8 @@ class evaluacion extends CI_Controller {
         }
 	else
         {
-            if($query_cp)
+            $query = $this->evaluacion_model->getEvaluacion($id);
+            if($query)
             {
                 $this->load->view('templates/head');
                 $this->load->view('academico/info_evaluacion', compact('query', 'id'));
