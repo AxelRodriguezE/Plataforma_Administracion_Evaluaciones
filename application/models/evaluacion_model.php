@@ -66,8 +66,14 @@ class evaluacion_model extends CI_Model
 	
 	public function getEvaluacion($id)
 	{
+            return $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->where('id_evaluacion', $id)->get()->row();
+	}
+        
+        public function getEvaluacion_cp($id)
+	{
             return $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->join('pauta', 'evaluacion.pauta_evaluacion = pauta.id_pauta')->where('id_evaluacion', $id)->get()->row();
 	}
+
 
 	public function eliminar($id)
         {

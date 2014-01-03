@@ -86,6 +86,7 @@ class evaluacion extends CI_Controller {
     {
         $this->load->model('evaluacion_model');
         $query = $this->evaluacion_model->getEvaluacion($id);
+        $query_cp = $this->evaluacion_model->getEvaluacion_cp($id);
         if($query)
         {
             $this->load->view('templates/head');
@@ -93,7 +94,16 @@ class evaluacion extends CI_Controller {
             $this->load->view('templates/footer');
         }
 	else
-            $this->load->view('error');     
+        {
+            if($query_cp)
+            {
+                $this->load->view('templates/head');
+                $this->load->view('academico/info_evaluacion', compact('query', 'id'));
+                $this->load->view('templates/footer');
+            }
+            else
+                $this->load->view('error');
+        }     
     }
 
     public function eliminar()
