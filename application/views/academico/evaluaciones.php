@@ -26,7 +26,7 @@
                     foreach ($query as $query):?>
                     <tr>    
                         <td><?php echo $query->id_evaluacion; ?></td>
-                    <td><?php echo $query->nombre_tipo; ?></td>
+                        <td><?php echo $query->nombre_tipo; ?></td>
                         <td><?php echo $query->nombre_asignatura; ?></td>
                         <td><?php echo $query->nombre_evaluacion; ?></td>
                         <td><?php echo $query->fecha_evaluacion; ?></td>
