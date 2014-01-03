@@ -34,6 +34,12 @@ class asignatura_model extends CI_Model
 		return $this->db->select('*')->from('asignatura')->where('id_asignatura', $id)->get()->row();
 	}
 
+	public function mostrar_academico()
+        {
+                $query_academico = $this->db->SELECT('*')->FROM('academico')->get();
+                return $query_academico->result();
+        }
+
 	public function eliminar($id)
         {
             if($this->db->delete('asignatura', array('id_asignatura'=>$id)))

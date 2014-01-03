@@ -20,6 +20,16 @@
                 'class' =>'form-control'
                               
             );
+
+             
+                
+                $datos_academico = array(
+                    " " => "Seleccione el Academico"
+                    );
+                foreach($query_academico as $query_academico){
+                        $datos_academico[$query_academico->id_academico] =  $query_academico->nombre_academico .' '. $query_academico->apellidos_academico;
+                }
+
             
 //             $academico = array(
 //                'type' => 'text',
@@ -41,6 +51,10 @@
                 echo form_input($seccion);
                 echo form_label('Nombre Asignatura:');
                 echo form_input($nombre);
+                echo "<br>";
+                echo form_label('Academico: ');
+                echo form_dropdown('academico',  $datos_academico);
+                echo "<br>";
                 echo "<br>";
                 echo form_submit($button);
             echo form_fieldset_close();

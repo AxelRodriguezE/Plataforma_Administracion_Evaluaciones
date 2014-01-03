@@ -29,8 +29,9 @@ class asignatura extends CI_Controller {
             }
             else
             {
+                $query_academico = $this->asignatura_model->mostrar_academico();
                 $this->load->view('templates/head');
-                $this->load->view('administrativo/agregar_asignatura');
+                $this->load->view('administrativo/agregar_asignatura', compact("query_academico"));
                 $this->load->view('templates/footer');   
             }
 	}
