@@ -17,8 +17,8 @@ class asignatura_model extends CI_Model
 	
 	public function mostrar()
 	{
-		$query = $this->db->order_by('id_asignatura', 'asc')->get('asignatura');
-		return $query->result();
+		$query = $this->db->select('*')->from('asignatura')->join('academico', 'asignatura.academico_asignatura = academico.id_academico')->get();
+                return $query->result();
 	}
 	
 	public function editar($id, $data)
