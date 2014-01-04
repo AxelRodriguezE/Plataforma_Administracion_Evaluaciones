@@ -1,6 +1,7 @@
 <div class="container">
     <div class="col-md-10 col-md-offset-1">
-        <?php
+        <div class="alert alert-info">        
+            <?php
             $nombre = array(
                 'type' => 'text',
                 'id' => 'nombre',
@@ -35,5 +36,6 @@
             echo form_fieldset_close();
             echo form_close();
         ?>
+        </div>
     </div>
 </div>

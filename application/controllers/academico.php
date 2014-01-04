@@ -102,32 +102,37 @@ class academico extends CI_Controller {
 		if($this->academico_model->eliminar($id))
 			redirect('academico');
 	}
-        
 
-	 public function modificar($id)
+        public function examinarAcademico($id = NULL)
         {
-//	    $this->load->model('academico_model');
-//            if($this->academico_model->getAcademico($id) )
-//            {
-//                 $academico = array(
-//                                        'nombre_academico' => $this->input->post('nombre_academico', true),
-//                                        'rut_academico' => $this->input->post('rut_academico', true),
-//                        );
-//		if($this->academico_model->editar($id,$academico))
-//                    {
-//                        redirect('academico');
-//                    }
-//		else
-//                    {
-//                        $this->load->view('academico/error');
-//                    }
-//	    }
-//	    else
-//            {
-//                $this->load->view('academico/error');
-//            }
-             
-             
+            $this->load->model('academico_model');
+            $academico_actual = $this->academico_model->getAcademico($id);
+            $query = $this->academico_model->mostrar_all($id);
+            if($query)
+            {
+                $this->load->view('templates/head');
+                $this->load->view('administrativo/info_academico', compact('query', 'id', 'academico_actual'));
+                $this->load->view('templates/footer');
+            }
+            else
+            {
+                $query = $this->evaluacion_model->mostrar_asign($id);
+                if($query)
+                {
+                    $this->load->view('templates/head');
+                    $this->load->view('administrativo/info_academico', compact('query', 'id', 'academico_actual'));
+                    $this->load->view('templates/footer');
+                }
+                else
+                    $query = $this->evaluacion_model->mostrar_basic($id);
+                    if($query)
+                    {
+                        $this->load->view('templates/head');
+                        $this->load->view('administrativo/info_academico', compact('query', 'id', 'academico_actual'));
+                        $this->load->view('templates/footer');
+                    }
+                    else
+                        $this->load->view('error');
+            }     
         }
-
 }

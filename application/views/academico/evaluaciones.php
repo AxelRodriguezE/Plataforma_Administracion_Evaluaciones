@@ -13,8 +13,8 @@
                 </tr>
             </thead>
             <tbody>
-                
                 <?php
+                    date_default_timezone_set('UTC');
                     $url_agregar = "index.php/evaluacion/agregar/";
                     $buttonagregar = array(
                             'class' => 'btn btn-default',
@@ -30,8 +30,19 @@
                         <td><?php echo $query->nombre_asignatura; ?></td>
                         <td><?php echo $query->nombre_evaluacion; ?></td>
                         <td><?php echo $query->fecha_evaluacion; ?></td>
-                        <td>Estado de la evaluacion</td>
-                        <td>Estado de pauta</td>
+                        <td><?php 
+                            if(date("Y-m-d") < $query->fecha_evaluacion) {?>
+                            <p class="text-info"><?php echo 'Pendiente'; }?></p>
+                           <?php 
+                            if(date("Y-m-d") > $query->fecha_evaluacion) {?>
+                            <p class="text-danger"><b><?php echo 'Finalizada'; }?></b></p>
+                        </td>
+                        <td><?php
+                            if($query->pauta_evaluacion)
+                                echo 'Pauta disponible';
+                            else
+                                echo 'Pauta pendiente';
+                        ?></td>
 
                         <?php 
                         $id = $query->id_evaluacion;

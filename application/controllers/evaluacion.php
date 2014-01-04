@@ -2,6 +2,17 @@
 
 class evaluacion extends CI_Controller {
 
+    public function index()
+    {       
+        $this->load->helper('url');
+	$data['title'] = 'Index';
+        $this->load->model('evaluacion_model');
+        $query = $this->evaluacion_model->mostrar();
+	$this->load->view('templates/head', compact('data'));
+	$this->load->view('academico/evaluaciones', compact("query"));
+	$this->load->view('templates/footer');
+    }
+    
     public function agregar()
     {
         if($this->input->post())
@@ -19,7 +30,7 @@ class evaluacion extends CI_Controller {
                 'academico_evaluacion' => $this->input->post('academico', true)
             );
             if($this->evaluacion_model->insertar($evaluacion))
-                redirect ('evaluacion/mostrarEvaluacion');          
+                redirect ('evaluacion');          
         }
         else
         {
@@ -71,15 +82,10 @@ class evaluacion extends CI_Controller {
             }
         }
     
-    public function mostrarEvaluacion()
-    {       
-        $this->load->model('evaluacion_model');
-        $query = $this->evaluacion_model->mostrar();
-	$this->load->view('templates/head', compact('data'));
-	$this->load->view('academico/evaluaciones', compact("query"));
-	$this->load->view('templates/footer');
-    }
-    
+//    public function mostrarEvaluacion()
+//    {       
+//    }
+//    
 
     
     public function examinarEvaluacion($id = NULL)
@@ -111,7 +117,7 @@ class evaluacion extends CI_Controller {
         $id = $this->uri->segment(3);
         $this->load->model('evaluacion_model');
 	if($this->evaluacion_model->eliminar($id))
-            redirect('evaluacion/mostrarEvaluacion');
+            redirect('evaluacion');
     }   
     
     public function subir_pauta()
@@ -137,7 +143,7 @@ class evaluacion extends CI_Controller {
 //                );
                // echo $id_evaluacion;
                 $this->evaluacion_model->ingresar_pauta_evaluacion($id_evaluacion, $id_pauta_new);
-                redirect ('evaluacion/mostrarEvaluacion');
+                redirect ('evaluacion');
             }
         }
 

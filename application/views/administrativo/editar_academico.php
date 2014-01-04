@@ -1,5 +1,7 @@
 <div class="container">
-    <?php
+    <div class="col-md-10 col-md-offset-1">
+        <div class="alert alert-success">    
+        <?php
         $id_academico = $query->id_academico;
         $nombre_academico = $query->nombre_academico;
         $apellidos_academico = $query->apellidos_academico;
@@ -43,8 +45,11 @@
             echo form_label('RUT:');
             echo form_input($rut);
             echo form_input($id);
+            echo '<br>';
             echo form_submit($button);
         echo form_fieldset_close();
         echo form_close();
     ?>
+        </div>
+    </div>
 </div>

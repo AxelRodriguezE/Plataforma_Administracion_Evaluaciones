@@ -30,7 +30,7 @@
                         $id = $query->id_academico;
                         $url_eliminar = "index.php/academico/eliminar/".$id;
                         $url_editar = "index.php/academico/editar/".$id;
-                        $url_examinar = "index.php/".$id;
+                        $url_examinar = "index.php/academico/examinarAcademico/".$id;
                         $buttoneditar = array(
                             'class' => 'btn btn-success',
                             'value' => 'Editar'
