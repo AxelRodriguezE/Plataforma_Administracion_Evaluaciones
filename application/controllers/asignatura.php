@@ -45,7 +45,7 @@ class asignatura extends CI_Controller {
                     'codigo_asignatura' => $this->input->post('codigo', true),
                     'seccion_asignatura' => $this->input->post('seccion', true),
                     'nombre_asignatura' => $this->input->post('nombre', true),
-                    'academico_asignatura' => $this->input->post('academico', true),
+                    
             );
                 if($this->asignatura_model->editar($this->input->post('id', true), $asignatura))
                     redirect('asignatura');
