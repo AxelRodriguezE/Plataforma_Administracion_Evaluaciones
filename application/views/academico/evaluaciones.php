@@ -17,8 +17,8 @@
                     date_default_timezone_set('UTC');
                     $url_agregar = "index.php/evaluacion/agregar/";
                     $buttonagregar = array(
-                            'class' => 'btn btn-default',
-                            'value' => '+'
+                            'class' => 'btn btn-warning',
+                            'value' => 'Añadir (+)'
                         );
                     if ($query == NULL)
                         echo 'Actualmente no se encuentran Evaluaciones en el sistema';

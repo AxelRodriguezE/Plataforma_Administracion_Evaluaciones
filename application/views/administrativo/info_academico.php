@@ -19,6 +19,7 @@
                         <th>Tipo</th>
                         <th>Titulo</th>
                         <th>Fecha</th>
+                        <th>Estado</th>
                         <th>Pauta</th>
                     </tr>
                 </thead>
@@ -33,6 +34,13 @@
                         <td><?php echo $query->nombre_tipo; ?></td>
                         <td><?php echo $query->nombre_evaluacion; ?></td>
                         <td><?php echo $query->fecha_evaluacion; ?></td>
+                        <td><?php 
+                            if(date("Y-m-d") < $query->fecha_evaluacion) {?>
+                            <p class="text-info"><?php echo 'Pendiente'; }?></p>
+                           <?php 
+                            if(date("Y-m-d") > $query->fecha_evaluacion) {?>
+                            <p class="text-danger"><b><?php echo 'Finalizada'; }?></b></p>
+                        </td>
                         <td>
                             <?php
                             if($query->pauta_evaluacion)
