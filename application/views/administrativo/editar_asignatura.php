@@ -69,15 +69,16 @@
             echo form_input($id);
             echo '<br>';
             echo form_submit($button);
+            echo form_open(base_url($url_volver));
+         echo form_submit($buttonvolver);
         echo form_fieldset_close();
         echo form_close();
+       
+         echo form_close();
+        
     ?>
 
-    <?php 
-         echo form_open(base_url($url_volver));
-         echo form_submit($buttonvolver);
-         echo form_close();
-         ?>
+    
          
         </div>
     </div>
