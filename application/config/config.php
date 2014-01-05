@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/~AxelRodriguez/Administracion_Evaluaciones';
+$config['base_url']	= 'http://localhost/nico/Plataforma_Administracion_Evaluaciones';
 
 /*
 |--------------------------------------------------------------------------
