@@ -42,6 +42,13 @@
             'class' => 'btn btn-primary',
             'value' => 'Modificar'
         );
+        
+        $url_volver = "index.php/asignatura";
+         $buttonvolver = array(
+                            'class' => 'btn btn-success',
+                            'value' => 'Volver'
+                        );
+                 
         echo form_open(base_url('/index.php/asignatura/editar'));
         echo form_fieldset('Editar Asignatura');
         ?>
@@ -65,6 +72,13 @@
         echo form_fieldset_close();
         echo form_close();
     ?>
+
+    <?php 
+         echo form_open(base_url($url_volver));
+         echo form_submit($buttonvolver);
+         echo form_close();
+         ?>
+         
         </div>
     </div>
 </div>
