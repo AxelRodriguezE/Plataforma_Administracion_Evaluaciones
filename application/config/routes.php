@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "academico";
+$route['default_controller'] = "publico";
 $route['404_override'] = '';
 
 

@@ -1,6 +1,9 @@
 <div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="alert alert-success">    
+        <div class="panel panel-success">
+        <div class="panel-heading"><h4>Editar Académico</h4></div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+ 
         <?php
         $id_academico = $query->id_academico;
         $nombre_academico = $query->nombre_academico;
@@ -36,8 +39,8 @@
             'class' => 'btn btn-primary',
             'value' => 'Modificar'
         );
+        echo '<br>';
         echo form_open(base_url('/index.php/academico/editar'));
-        echo form_fieldset('Nuevo Academico');
             echo form_label('Nombre:');
             echo form_input($nombre);
             echo form_label('Apellidos:');
@@ -49,7 +52,9 @@
             echo form_submit($button);
         echo form_fieldset_close();
         echo form_close();
+        echo '<br>';
     ?>
+                </div>
         </div>
     </div>
 </div>

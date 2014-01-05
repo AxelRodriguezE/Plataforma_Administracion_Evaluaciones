@@ -57,12 +57,9 @@ class evaluacion extends CI_Controller {
                     'hora_evaluacion' => $this->input->post('hora', true),
                     'ponderacion_evaluacion' => $this->input->post('ponderacion', true),
                     'observacion_evaluacion' => $this->input->post('observacion', true),
-                    'tipo_evaluacion' => $this->input->post('tipo', true),
-                    'asignatura_evaluacion' => $this->input->post('asignatura', true),
-                    'academico_evaluacion' => $this->input->post('academico', true)
             );
                 if($this->evaluacion_model->editar($this->input->post('id', true), $evaluacion))
-                    redirect('evaluacion/mostrarEvaluacion');
+                    redirect('evaluacion');
                 else
                     $this->load->view('error');
             }
@@ -105,6 +102,30 @@ class evaluacion extends CI_Controller {
             {
                 $this->load->view('templates/head');
                 $this->load->view('academico/info_evaluacion', compact('query', 'id'));
+                $this->load->view('templates/footer');
+            }
+            else
+                $this->load->view('error');
+        }     
+    }
+    
+    public function examinarEvaluacion_publico($id = NULL)
+    {
+        $this->load->model('evaluacion_model');
+        $query = $this->evaluacion_model->getEvaluacion_cp($id);
+        if($query)
+        {
+            $this->load->view('templates/head');
+            $this->load->view('publico/info_evaluacion', compact('query', 'id'));
+            $this->load->view('templates/footer');
+        }
+	else
+        {
+            $query = $this->evaluacion_model->getEvaluacion($id);
+            if($query)
+            {
+                $this->load->view('templates/head');
+                $this->load->view('publico/info_evaluacion', compact('query', 'id'));
                 $this->load->view('templates/footer');
             }
             else

@@ -1,6 +1,9 @@
 <div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="alert alert-success">
+        <div class="panel panel-success">
+        <div class="panel-heading"><h4>Editar Evaluación</h4></div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+
     <?php
         $id_evaluacion = $query->id_evaluacion;
         $nombre_evaluacion = $query->nombre_evaluacion;
@@ -54,36 +57,17 @@
             'class' => 'btn btn-primary',
             'value' => 'Modificar'
         );
+        echo '<br>';
 echo form_open(base_url('/index.php/evaluacion/editar'));
-            echo form_fieldset('Editar Evaluación');
-                //echo form_label('Academico');
-                //Desplegar menu con los academicos de la escuela de informatica (en el sistema)...
-//                $datos_academico = array(
-//                    " " => "Seleccione el Academico"
-//                    );
-//                foreach($query_academico as $query_academico){
-//                        $datos_academico[$query_academico->id_academico] =  $query_academico->nombre_academico .' '. $query_academico->apellidos_academico;
-//                }
-//                echo "<br>";
-//                echo form_dropdown('academico',  $datos_academico);
-//                echo "<br>";
-//                
-//                echo form_label('Asignatura');
-                
-                //Desplegar menu con las asignaturas del sistema...
-//                $datos_asignatura = array(
-//                    " " => "Seleccione la Asignatura"
-//                );
-//                foreach($query_asignatura as $query_asignatura){
-//                        $datos_asignatura[$query_asignatura->id_asignatura] =  $query_asignatura->nombre_asignatura;
-//                }
-                echo $query->nombre_academico .' '. $query->apellidos_academico;
-                echo '<br>';
-                echo $query->nombre_asignatura;
-                echo '<br>';
-                echo $query->nombre_tipo;
-                echo '<br>';
-                //echo form_dropdown('asignatura',  $datos_asignatura);
+?>
+                <h4><b class="text-danger"><?php echo $query->nombre_tipo; ?></b>
+                <?php echo 'creada por ' ?>
+                <b class="text-danger"><?php echo $query->nombre_academico .' '. $query->apellidos_academico;?></b>
+                <?php echo ','; ?>
+                <br><br>
+                <?php echo 'para la asignatura '?>
+                <b class="text-danger"><?php echo $query->nombre_asignatura; ?></b></h4>
+                <?php 
                 echo '<br>';
                 echo form_label('Titulo:');
                 echo form_input($nombre);
@@ -112,8 +96,10 @@ echo form_open(base_url('/index.php/evaluacion/editar'));
                 echo form_submit($button);
             echo form_fieldset_close();
             echo form_close();
+            echo '<br>';
 
     ?>
+                </div>
         </div>
     </div>
 </div>
