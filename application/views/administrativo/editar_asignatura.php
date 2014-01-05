@@ -44,8 +44,15 @@
         );
         echo form_open(base_url('/index.php/asignatura/editar'));
         echo form_fieldset('Editar Asignatura');
-            echo $query->nombre_academico .' '. $query->apellidos_academico;
-            echo '<br>';
+        ?>
+            <h4>
+                <?php echo 'Asignatura creada por ' ?>
+                <b class="text-danger"><?php echo $query->academico_asignatura?></b>
+               
+                <br><br>
+                </h4>
+                <?php 
+                echo '<br>';
             echo form_label('Codigo Asignatura:');
             echo form_input($codigo);
             echo form_label('Seccion Asignatura:');

@@ -55,9 +55,10 @@ class asignatura extends CI_Controller {
             else
             {
                 $query = $this->asignatura_model->getAsignatura($id);
+                $query_academico = $this->asignatura_model->mostrar_academico();
 		if($query){
                     $this->load->view('templates/head');
-                    $this->load->view('administrativo/editar_asignatura', compact('query', 'id'));
+                    $this->load->view('administrativo/editar_asignatura', compact('query', 'id', 'query_academico'));
                     $this->load->view('templates/footer');
                 }
 		else
