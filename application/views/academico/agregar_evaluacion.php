@@ -47,10 +47,8 @@
                                 //enviar oculto nombre del academico logueado
                 
                 //rescatar la asignatura que se esta ingresando una evaluacion
-                echo form_label('Academico');
-                
+                echo form_label('Seleccione un Académico:');
                 $datos_academico = array(
-                    " " => "Seleccione el Academico"
                     );
                 foreach($query_academico as $query_academico){
                         $datos_academico[$query_academico->id_academico] =  $query_academico->nombre_academico .' '. $query_academico->apellidos_academico;
@@ -59,10 +57,8 @@
                 echo form_dropdown('academico',  $datos_academico);
                 echo "<br>";
                 
-                echo form_label('Asignatura');
-                
+                echo form_label('Seleccione una Asignatura:');
                 $datos_asignatura = array(
-                    " " => "Seleccione la Asignatura"
                 );
                 foreach($query_asignatura as $query_asignatura){
                         $datos_asignatura[$query_asignatura->id_asignatura] =  $query_asignatura->nombre_asignatura;
@@ -78,10 +74,8 @@
                 echo form_input($fecha);
                 echo form_label('Hora:');
                 echo form_input($hora);
-                echo form_label('Tipo de evaluacion');
-                                
+                echo form_label('Seleccione el Tipo de evaluacion:');
                 $datos_tipo = array(
-                    " " => "Seleccione el tipo de evaluacion"
                 );
                 foreach($query_tipo as $query_tipo){
                         $datos_tipo[$query_tipo->id_tipo] =  $query_tipo->nombre_tipo;

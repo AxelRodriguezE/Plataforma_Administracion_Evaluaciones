@@ -49,11 +49,16 @@ class evaluacion_model extends CI_Model
 
 	public function mostrar()
 	{
-		$query = $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->get();
+		$query = $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->ORDER_BY('fecha_evaluacion', 'DESC')->get();
                 return $query->result();
 	}
         
-        
+        public function mostrar_por_asignatura($id)
+        {
+                $query_por_asignatura = $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->where('asignatura_evaluacion', $id)->ORDER_BY('fecha_evaluacion', 'DESC')->get();
+                return $query_por_asignatura->result();
+        }
+
         
         
 	public function editar($id, $data)
