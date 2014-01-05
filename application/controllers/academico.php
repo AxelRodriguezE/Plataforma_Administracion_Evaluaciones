@@ -8,7 +8,7 @@ class academico extends CI_Controller {
 		$this->load->model('academico_model');
 		$query = $this->academico_model->mostrar();
 		$this->load->view('templates/head', compact('data'));
-		$this->load->view('administrativo/academicos', compact("query"));
+		$this->load->view('administrativo/academicos', compact("query", "estudiante"));
 		$this->load->view('templates/footer');
         }
 	

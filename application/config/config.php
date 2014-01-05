@@ -369,8 +369,8 @@ $config['proxy_ips'] = '';
 */
 
 $config['dirdoc_ws_url'] = 'http://informatica.utem.cl:8011/dirdoc-auth/ws/auth?wsdl';
-$config['dirdoc_ws_user'] = 'CAMBIAME!';
-$config['dirdoc_ws_password'] = 'CAMBIAME';
+$config['dirdoc_ws_user'] = 'arodriguez';
+$config['dirdoc_ws_password'] = 'db52961f00a81c3dc9d94c583f6302ec9f83c172';
 
 
 /* End of file config.php */

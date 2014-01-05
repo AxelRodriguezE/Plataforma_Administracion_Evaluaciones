@@ -11,10 +11,11 @@
             </thead>
             <tbody>
                 <?php
+                    
                     $url_agregar = "index.php/academico/agregar/";
                     $buttonagregar = array(
-                            'class' => 'btn btn-default',
-                            'value' => '+'
+                            'class' => 'btn btn-warning',
+                            'value' => 'Añadir (+)'
                         );
                     if ($query == NULL)
                         echo 'Actualmente no se encuentran Academicos en el sistema';

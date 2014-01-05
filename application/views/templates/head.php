@@ -69,3 +69,6 @@
                 </div><!-- /.navbar-collapse -->
             </nav>
         </div>
+        <?php
+            date_default_timezone_set('UTC');
+        ?>                    
