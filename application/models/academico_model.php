@@ -23,7 +23,7 @@ class academico_model extends CI_Model
         
         public function mostrar_all($id)
         {
-                $query = $this->db->select('*')->from('academico')->join('evaluacion', 'academico.id_academico = evaluacion.academico_evaluacion')->join('asignatura', 'academico.id_academico = asignatura.academico_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->where('id_academico', $id)->get();
+                $query = $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->where('academico_evaluacion', $id)->get();
                 return $query->result();
         }
         
@@ -51,7 +51,7 @@ class academico_model extends CI_Model
 	{
 		return $this->db->select('*')->from('academico')->where('id_academico', $id)->get()->row();
 	}
-                
+                        
         public function eliminar($id)
         {
             if($this->db->delete('academico', array('id_academico'=>$id)))

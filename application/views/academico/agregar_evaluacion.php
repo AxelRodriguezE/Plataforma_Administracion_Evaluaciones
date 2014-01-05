@@ -1,6 +1,9 @@
 <div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="alert alert-info">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h4>Agregar Evaluación</h4></div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+
         <?php
             $nombre = array(
                 'type' => 'text',
@@ -37,8 +40,8 @@
                 'class' => 'btn btn-primary',
                 'value' => 'Agregar'
             );
+            echo '<br>';
             echo form_open(base_url('/index.php/evaluacion/agregar'));
-            echo form_fieldset('Nueva Evaluación');
 //                echo 'Creando una nueva evaluación para:';
 //                echo "<br>";
 //                echo 'Asignatura:';
@@ -75,6 +78,7 @@
                 echo form_label('Hora:');
                 echo form_input($hora);
                 echo form_label('Seleccione el Tipo de evaluacion:');
+                echo '<br>';            
                 $datos_tipo = array(
                 );
                 foreach($query_tipo as $query_tipo){
@@ -92,7 +96,9 @@
                 echo form_submit($button);
             echo form_fieldset_close();
             echo form_close();
+            echo '<br>';
         ?>
+                </div>
         </div>
     </div>
 </div>
