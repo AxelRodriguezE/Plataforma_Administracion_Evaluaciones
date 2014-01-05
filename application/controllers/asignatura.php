@@ -45,7 +45,7 @@ class asignatura extends CI_Controller {
                     'codigo_asignatura' => $this->input->post('codigo', true),
                     'seccion_asignatura' => $this->input->post('seccion', true),
                     'nombre_asignatura' => $this->input->post('nombre', true),
-                    'academico_asignatura' => $this->input->post('academico', true),
+                    
             );
                 if($this->asignatura_model->editar($this->input->post('id', true), $asignatura))
                     redirect('asignatura');
@@ -55,9 +55,10 @@ class asignatura extends CI_Controller {
             else
             {
                 $query = $this->asignatura_model->getAsignatura($id);
+                $query_academico = $this->asignatura_model->mostrar_academico();
 		if($query){
                     $this->load->view('templates/head');
-                    $this->load->view('administrativo/editar_asignatura', compact('query', 'id'));
+                    $this->load->view('administrativo/editar_asignatura', compact('query', 'id', 'query_academico'));
                     $this->load->view('templates/footer');
                 }
 		else
