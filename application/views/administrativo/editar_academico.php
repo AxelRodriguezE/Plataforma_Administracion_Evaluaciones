@@ -39,6 +39,14 @@
             'class' => 'btn btn-primary',
             'value' => 'Modificar'
         );
+
+         $url_volver = "index.php/academico";
+         $buttonvolver = array(
+                            'class' => 'btn btn-success',
+                            'value' => 'Volver'
+                        );
+
+
         echo '<br>';
         echo form_open(base_url('/index.php/academico/editar'));
             echo form_label('Nombre:');
@@ -55,8 +63,13 @@
         echo '<br>';
     ?>
                 </div>
-
-
         </div>
+
     </div>
+     <?php
+         echo form_open(base_url($url_volver));
+         echo form_submit($buttonvolver);
+         echo form_close();
+    ?>
+
 </div>
