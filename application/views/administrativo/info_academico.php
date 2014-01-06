@@ -53,10 +53,7 @@
                             <p class="text-info"><?php echo 'Pendiente'; }?></p>
                            <?php 
                             if(date("Y-m-d") > $query->fecha_evaluacion) {?>
-                            <p class="text-danger"><b><?php echo 'Finalizada'; } } else?></b></p>
-                           <?php
-                            echo ' - ';
-                           ?>
+                            <p class="text-danger"><b><?php echo 'Finalizada'; } }?></b></p>
                         </td>
                         <td>
                             <?php
@@ -66,9 +63,6 @@
                                     echo 'Pauta disponible';
                                 else
                                     echo 'Pauta pendiente';
-                            }
-                            else {
-                                echo ' - ';
                             }
                             $url_volver = "index.php/academico";
                             $buttonvolver = array(
