@@ -26,7 +26,7 @@
             'value' => 'Ingresar'
         );
 
-        echo form_open(base_url('index.php/evaluacion/'));
+        echo form_open(base_url('index.php/login/validar'));
             echo form_fieldset('Ingresar datos de usuario');
             echo form_label('Rut: ');
             echo form_input($rut);
