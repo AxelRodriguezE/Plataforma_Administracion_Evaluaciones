@@ -55,16 +55,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Inicio</a>
+                    <a class="navbar-brand" href="/Plataforma_Administracion_Evaluaciones/index.php">Inicio</a>
                 </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Asignaturas</a></li>
-                        <li><a href="#">Academicos</a></li>
+                        <li><a href="/Plataforma_Administracion_Evaluaciones/index.php/asignatura">Asignaturas</a></li>
+                        <li><a href="/Plataforma_Administracion_Evaluaciones/index.php/academico">Academicos</a></li>
                         <li><a href="#">Central de Apuntes</a></li>
-                        <li><a href='#'>Intranet</a></li>
+                        <li><a href='http://www.utem.cl'>Intranet</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>

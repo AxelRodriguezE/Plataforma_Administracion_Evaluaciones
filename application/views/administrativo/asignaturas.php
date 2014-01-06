@@ -39,10 +39,7 @@
                             'class' => 'btn btn-danger',
                             'value' => 'Eliminar'
                         );
-                        $buttonexaminar = array(
-                            'class' => 'btn btn-info',
-                            'value' => 'Examinar'
-                        );
+                        
                         ?>
                         <td>
                             <?php
@@ -58,13 +55,7 @@
                                 echo form_close();
                             ?>
                         </td>
-                        <td>
-                            <?php
-                                echo form_open(base_url($url_examinar));
-                                    echo form_submit($buttonexaminar);
-                                echo form_close();
-                            ?>
-                        </td>
+                        
                     </tr>
                     <?php endforeach; }?>
             </tbody>
