@@ -27,6 +27,14 @@
                 'class' => 'btn btn-primary',
                 'value' => 'Agregar asignatura'
             );
+
+
+         $url_volver = "index.php/academico";
+         $buttonvolver = array(
+                            'class' => 'btn btn-success',
+                            'value' => 'Volver'
+                        );
+
             echo '<br>';
             echo form_open(base_url('/index.php/academico/asignar_asignatura'));
                 echo form_label('Nombre:');
@@ -44,4 +52,9 @@
                 </div>
         </div>
     </div>
+     <?php
+         echo form_open(base_url($url_volver));
+         echo form_submit($buttonvolver);
+         echo form_close();
+    ?>
 </div>
