@@ -8,6 +8,7 @@ class asignatura extends CI_Controller {
 		$this->load->model('asignatura_model');
 		$query = $this->asignatura_model->mostrar();
 		$this->load->view('templates/head', compact('data'));
+                $this->load->view('templates/menu_admin');
 		$this->load->view('administrativo/asignaturas', compact("query"));
 		$this->load->view('templates/footer');
         }
