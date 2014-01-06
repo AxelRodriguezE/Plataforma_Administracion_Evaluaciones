@@ -1,3 +1,11 @@
+
+<div class="col-lg-12">
+        <h3 class="text-info" align="center">Registro de Académicos</h3>
+        <p align="center"><b>Escuela de Informática</b></p>
+        <p align="center"><b>Universidad Tecnológica Metropolitana</b></p>
+        <br>
+    </div>
+
 <div class="container">
         <div class="panel panel-success">
         <div class="panel-heading"><h4>Editar Académico</h4></div>
@@ -66,10 +74,11 @@
         </div>
 
     </div>
+     <center>
      <?php
          echo form_open(base_url($url_volver));
          echo form_submit($buttonvolver);
          echo form_close();
     ?>
-
+</center>
 </div>

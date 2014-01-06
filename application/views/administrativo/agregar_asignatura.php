@@ -1,4 +1,12 @@
 <div class="container">
+
+<div class="col-lg-12">
+        <h3 class="text-info" align="center">Registro de Asignaturas</h3>
+        <p align="center"><b>Escuela de Informática</b></p>
+        <p align="center"><b>Universidad Tecnológica Metropolitana</b></p>
+        <br>
+    </div>
+    
     <div class="col-md-10 col-md-offset-1">
         <?php
             $codigo = array(
@@ -66,11 +74,14 @@
         ?>
 
 <br></br>
+ 
+<center>
  <?php
          echo form_open(base_url($url_volver));
          echo form_submit($buttonvolver);
          echo form_close();
     ?>
+</center>
 
     </div>
 
