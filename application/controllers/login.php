@@ -16,47 +16,47 @@ class login extends CI_Controller {
             $this->load->view('templates/footer');
         }
         
-        public function validar()
+    public function validar()
+    {
+        $password = $this->input->post('password', true);
+        $rut = $this->input->post('rut', true);
+        $_SESSION['rut'] = $rut;
+        $pass = hash('sha256', strtoupper($password));
+        $this->load->library('ws_dirdoc');
+        //var_dump($docente);
+        //echo $docente->tipo;
+        $auth = $this->ws_dirdoc->autenticar($rut, $pass);
+        //¿QUE HACER CUANDO TIRE ERROR?? 
+        if($auth)
         {
-         
-            $password = $this->input->post('password', true);
-            $rut = $this->input->post('rut', true);
-            $_SESSION['rut'] = $rut;
-            $pass = hash('sha256', strtoupper($password));
-            $this->load->library('ws_dirdoc');
-            //var_dump($docente);
-            //echo $docente->tipo;
-            $auth = $this->ws_dirdoc->autenticar($rut, $pass);
-            $docente = $this->ws_dirdoc->getAcademico('55850402');//ingresar rut academico para probar...
-            $tipo = $docente->tipo;
-            $jer = $docente->jerarquia;
-            echo $jer;
-            echo $tipo;
-            //¿QUE HACER CUANDO TIRE ERROR?? 
-            if($auth)
+            //echo 'entro a auth';
+            $docente = $this->ws_dirdoc->getAcademico('104716482');//ingresar rut academico para probar...
+            if(isset($docente))
             {
+                $tipo = $docente->tipo;
                 if(isset($docente->jerarquia) && $tipo == "PROF")
                 {
+                    //echo 'entro a jerarquia';
                     $jerarquia = $docente->jerarquia;
                     if ($jerarquia == "ASISTENTE") {
-                        $this->load->helper('url');
+                        //echo 'entro como asistente';
                         $data['title'] = 'Index';
-                        $this->load->model('evaluacion_model');
-                        $academico_eval = $this->evaluacion_model->getIDAcademico('55850402');
-                        $id_academico_eval = $academico_eval->id_academico;
-                        $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
+                        $this->load->model('asignatura_model');
+                        $query = $this->asignatura_model->mostrar();
                         $this->load->view('templates/head', compact('data'));
-                        $this->load->view('administrativo/academicos', compact("query", "id_academico_eval"));
-                        $this->load->view('templates/footer');    
+                        $this->load->view('templates/menu_admin');
+                        $this->load->view('administrativo/asignaturas', compact("query"));
+                        $this->load->view('templates/footer');
                     }
                     else{
                         echo 'Solo acceso a Jefes de Carrera';
                     }
-                     
+
                 }
                 else{
                     if($tipo == "PROF")
                     {
+                        //echo 'entro a profesor';
                         $this->load->helper('url');
                         $data['title'] = 'Index';
                         $this->load->model('evaluacion_model');
@@ -72,11 +72,14 @@ class login extends CI_Controller {
                     }
                 }
             }
-            else
-                echo 'Usted no tiene los permisos para acceder! >:D';
-        }
+            else {
+                echo 'Acceso denegado: El usuario debe ser Académico';
+            }
 
-        
-        
+        }
+        else{
+            echo 'Usted no tiene los permisos para acceder! >:D';   
+        }
+    }        
 }  
 ?>

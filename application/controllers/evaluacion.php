@@ -22,8 +22,9 @@ class evaluacion extends CI_Controller {
                 $this->load->view('academico/evaluaciones', compact("query", "id_academico_eval"));
                 $this->load->view('templates/footer'); 
             }
-            else
+            else{
                 echo 'Usted no tiene los permisos para acceder! >:D';
+            }
         }
 
         public function agregar($id = NULL)

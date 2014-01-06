@@ -2,13 +2,16 @@
 
 class asignatura extends CI_Controller {
 
-    public function __construct(){
-        parent::__construct();
-        session_start();
-    }
+        public function __construct(){
+            parent::__construct();
+            session_start();
+        }
 
         public function index()
-	{       
+	{
+            echo $_SESSION['rut'];
+            if(isset($_SESSION['rut']))
+            {
 		$data['title'] = 'Index';
 		$this->load->model('asignatura_model');
 		$query = $this->asignatura_model->mostrar();
@@ -16,6 +19,10 @@ class asignatura extends CI_Controller {
                 $this->load->view('templates/menu_admin');
 		$this->load->view('administrativo/asignaturas', compact("query"));
 		$this->load->view('templates/footer');
+            }
+            else{
+                echo 'Usted no tiene los permisos para acceder! >:D';
+            }
         }
 	
 	public function agregar()
