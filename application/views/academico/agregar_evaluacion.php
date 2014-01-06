@@ -84,7 +84,6 @@
                 echo form_label('Hora:');
                 echo form_input($hora);
                 echo form_label('Seleccione el Tipo de evaluacion:');
-                echo '<br>';            
                 $datos_tipo = array(
                 );
                 foreach($query_tipo as $query_tipo){

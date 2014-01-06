@@ -12,7 +12,7 @@ class evaluacion extends CI_Controller {
             //var_dump($docente);
             //echo $docente->tipo;
             $auth = $this->ws_dirdoc->autenticar($rut, $pass);
-            $docente = $this->ws_dirdoc->getAcademico('130311334');//ingresar rut academico para probar...
+            $docente = $this->ws_dirdoc->getAcademico('104716482');//ingresar rut academico para probar...
             $tipo = $docente->tipo;
             //¿QUE HACER CUANDO TIRE ERROR?? 
             if($auth)
@@ -22,7 +22,7 @@ class evaluacion extends CI_Controller {
                     $this->load->helper('url');
                     $data['title'] = 'Index';
                     $this->load->model('evaluacion_model');
-                    $academico_eval = $this->evaluacion_model->getIDAcademico('130311334');
+                    $academico_eval = $this->evaluacion_model->getIDAcademico('104716482');
                     $id_academico_eval = $academico_eval->id_academico;
                     $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
                     $this->load->view('templates/head', compact('data'));
@@ -60,7 +60,8 @@ class evaluacion extends CI_Controller {
     //                $academico_evaluacion = $this->evaluacion_model->getAcademico_evaluacion();
     //                $asignatura_evaluacion = $this->evaluacion_model->getAsignatura_evaluacion();
                 $query_asignatura = $this->evaluacion_model->mostrar_asignatura_ac($id);
-                var_dump($query_asignatura);
+//                var_dump($query_asignatura);
+//                echo $id;
                 //$query_academico = $this->evaluacion_model->mostrar_academico();
                 $query_tipo = $this->evaluacion_model->mostrar_tipo();
                 $this->load->view('templates/head');
