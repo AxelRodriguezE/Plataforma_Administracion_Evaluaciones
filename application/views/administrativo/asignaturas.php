@@ -13,8 +13,8 @@
                 <?php
                     $url_agregar = "index.php/asignatura/agregar/";
                     $buttonagregar = array(
-                            'class' => 'btn btn-default',
-                            'value' => '+'
+                            'class' => 'btn btn-warning',
+                            'value' => 'Añadir (+)'
                         );
                     if ($query == NULL)
                         echo 'Actualmente no se encuentran Asignaturas en el sistema';

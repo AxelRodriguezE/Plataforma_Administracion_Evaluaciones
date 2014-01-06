@@ -25,7 +25,7 @@
             //$url_agregar = "index.php/asignatura/asignar_asignatura";
             $buttonagregar = array(
                 'class' => 'btn btn-primary',
-                'value' => 'Agregar asignatura'
+                'value' => 'Agregar'
             );
 
 
@@ -43,6 +43,8 @@
                 echo form_input($apellidos);
                 echo form_label('RUT:');
                 echo form_input($rut);
+                echo "<br>";
+                echo form_label('Al ingresar un academico, se le debe asignar una asignatura');
                 echo "<br>";
                 echo form_submit($buttonagregar);
             echo form_fieldset_close();

@@ -20,8 +20,11 @@
         echo form_label('Rut: ');
         echo form_input($rut);
         echo ' *Rut sin puntos ni guion';
+        echo "<br>";
+        echo "<br>";
         echo form_label('Password: ');
         echo form_input($password);
+        echo "<br>";
         echo form_submit($button);
     echo form_close();
 ?>
