@@ -79,29 +79,6 @@ class asignatura extends CI_Controller {
 
 	 public function eliminar()
         {    
-//            $this->load->model('academico_model');
-//            if($this->input->post())
-//            {
-//                $academico = array(
-//                    'nombre_academico' => $this->input->post('nombre_academico', true),
-//                    'apellidos_academico' => $this->input->post('apellidos_academico', true),
-//                    'rut_academico' => $this->input->post('rut_academico', true),
-//                );
-//            }
-//            else
-//            {
-//                $query = $this->academico_model->getAcademico($id);
-//                if($query)
-//                {
-//                    $this->academico_model->eliminar($id);
-//                    //Buscando como mostrar un mensaje bonito en home que se elimino
-//                    redirect('academico');
-//                }
-//                else
-//                {
-//                    $this->load->view("academico/error");
-//                }
-//            }
 		$id = $this->uri->segment(3);
 		$this->load->model('asignatura_model');
 		if($this->asignatura_model->eliminar($id))
@@ -111,27 +88,6 @@ class asignatura extends CI_Controller {
 
 	 public function modificar($id)
         {
-//	    $this->load->model('academico_model');
-//            if($this->academico_model->getAcademico($id) )
-//            {
-//                 $academico = array(
-//                                        'nombre_academico' => $this->input->post('nombre_academico', true),
-//                                        'rut_academico' => $this->input->post('rut_academico', true),
-//                        );
-//		if($this->academico_model->editar($id,$academico))
-//                    {
-//                        redirect('academico');
-//                    }
-//		else
-//                    {
-//                        $this->load->view('academico/error');
-//                    }
-//	    }
-//	    else
-//            {
-//                $this->load->view('academico/error');
-//            }
-             
              
         }
 

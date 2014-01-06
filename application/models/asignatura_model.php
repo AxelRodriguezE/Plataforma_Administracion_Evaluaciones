@@ -42,9 +42,18 @@ class asignatura_model extends CI_Model
 
 	public function eliminar($id)
         {
-            if($this->db->delete('asignatura', array('id_asignatura'=>$id)))
+            if($this->db->delete('evaluacion', array('asignatura_evaluacion'=>$id)))
+            {
+                if($this->db->delete('asignatura', array('id_asignatura'=>$id)))
+                    return true;
                 return true;
+            }
             else
-                return false;
+            {
+                if($this->db->delete('asignatura', array('id_asignatura'=>$id)))
+                    return true;
+                else
+                    return false;
+            }
         }
 }

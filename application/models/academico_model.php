@@ -60,9 +60,36 @@ class academico_model extends CI_Model
                         
         public function eliminar($id)
         {
-            if($this->db->delete('academico', array('id_academico'=>$id)))
-                return true;
+            if($this->db->delete('evaluacion', array('academico_evaluacion'=>$id)))
+            {
+                    if($this->db->delete('asignatura', array('academico_asignatura'=>$id)))
+                    {
+                            if($this->db->delete('academico', array('id_academico'=>$id)))
+                                    return true;
+                            return true;
+                    }
+                    else
+                    {
+                            if($this->db->delete('academico', array('id_academico'=>$id)))
+                                    return true;
+                    }
+                    return true;
+            }
             else
-                return false;
+            {
+                    if($this->db->delete('asignatura', array('academico_asignatura'=>$id)))
+                    {
+                            if($this->db->delete('academico', array('id_academico'=>$id)))
+                                    return true;
+                            return true;
+                    }
+                    else
+                    {
+                            if($this->db->delete('academico', array('id_academico'=>$id)))
+                                    return true;
+                            else
+                                    return false;
+                    }
+            }
         }
 }

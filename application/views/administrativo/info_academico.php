@@ -31,30 +31,50 @@
                     foreach ($query as $query):?>
                     <tr>
                         <td><?php echo $query->nombre_asignatura; ?></td>
-                        <td><?php echo $query->nombre_tipo; ?></td>
-                        <td><?php echo $query->nombre_evaluacion; ?></td>
-                        <td><?php echo $query->fecha_evaluacion; ?></td>
+                        <td><?php
+                        if(isset($query->nombre_tipo))
+                            echo $query->nombre_tipo;
+                        else 
+                            echo 'Dato no ingresado'; ?></td>
                         <td><?php 
+                        if(isset($query->nombre_evaluacion))
+                            echo $query->nombre_evaluacion;
+                        else
+                            echo 'Dato no ingresado'; ?></td>
+                        <td><?php 
+                        if(isset($query->fecha_evaluacion))
+                            echo $query->fecha_evaluacion;
+                        else
+                            echo 'Dato no ingresado'; ?></td>
+                        <td><?php
+                        if(isset($query->fecha_evaluacion))
+                        {
                             if(date("Y-m-d") < $query->fecha_evaluacion) {?>
                             <p class="text-info"><?php echo 'Pendiente'; }?></p>
                            <?php 
                             if(date("Y-m-d") > $query->fecha_evaluacion) {?>
-                            <p class="text-danger"><b><?php echo 'Finalizada'; }?></b></p>
+                            <p class="text-danger"><b><?php echo 'Finalizada'; } } else?></b></p>
+                           <?php
+                            echo ' - ';
+                           ?>
                         </td>
                         <td>
                             <?php
-                            if($query->pauta_evaluacion)
-                                echo 'Pauta disponible';
-                            else
-                                echo 'Pauta pendiente';
-
-                             $url_volver = "index.php/academico";
-                             $buttonvolver = array(
-                            'class' => 'btn btn-success',
-                            'value' => 'Volver'
-                              );
-
-
+                            if(isset($query->pauta_evaluacion))
+                            {
+                                if($query->pauta_evaluacion)
+                                    echo 'Pauta disponible';
+                                else
+                                    echo 'Pauta pendiente';
+                            }
+                            else {
+                                echo ' - ';
+                            }
+                            $url_volver = "index.php/academico";
+                            $buttonvolver = array(
+                               'class' => 'btn btn-success',
+                               'value' => 'Volver'
+                                );
                             ?>
 
                         </td>

@@ -89,44 +89,11 @@ class academico extends CI_Controller {
                 }
 		else
                     $this->load->view('error');
-            }
-            
-//            $saludar = 'Holaaa axel';
-//            $data['saluda'] = $saludar;
-//            
-//            $this->load->view('templates/head');
-//            $this->load->model('academico_model');
-//            $query = $this->academico_model->mostrar();
-//            $this->load->view('academico/editar', compact("query"));
-//            $this->load->view('templates/footer');
-         
+            }         
 	}
 
 	 public function eliminar()
         {    
-//            $this->load->model('academico_model');
-//            if($this->input->post())
-//            {
-//                $academico = array(
-//                    'nombre_academico' => $this->input->post('nombre_academico', true),
-//                    'apellidos_academico' => $this->input->post('apellidos_academico', true),
-//                    'rut_academico' => $this->input->post('rut_academico', true),
-//                );
-//            }
-//            else
-//            {
-//                $query = $this->academico_model->getAcademico($id);
-//                if($query)
-//                {
-//                    $this->academico_model->eliminar($id);
-//                    //Buscando como mostrar un mensaje bonito en home que se elimino
-//                    redirect('academico');
-//                }
-//                else
-//                {
-//                    $this->load->view("academico/error");
-//                }
-//            }
 		$id = $this->uri->segment(3);
 		$this->load->model('academico_model');
 		if($this->academico_model->eliminar($id))
