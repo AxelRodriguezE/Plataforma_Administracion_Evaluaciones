@@ -55,16 +55,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/Plataforma_Administracion_Evaluaciones/index.php">Inicio</a>
+                    <a class="navbar-brand" href="<?php echo base_url('index.php'); ?>">inicio</a>
                 </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/Plataforma_Administracion_Evaluaciones/index.php/asignatura">Asignaturas</a></li>
-                        <li><a href="/Plataforma_Administracion_Evaluaciones/index.php/academico">Academicos</a></li>
-                        <li><a href="/Plataforma_Administracion_Evaluaciones/index.php/login">Central de Apuntes</a></li>
-                        <li><a href='http://www.utem.cl'>Intranet</a></li>
+                        <li><a href="http://alumnos.informatica.utem.cl/~ibriones/Web-Informatica/webinfo">Web de Informatica</a></li>
+                        <li><a href="http://www.utem.cl">Web UTEM</a></li>
+                        <li><a href="http://centraldigital.informatica.utem.cl">Central de Apuntes</a></li>
+                        <li><button type = "button"  class = "btn btn-default navbar-btn" href="<?php echo base_url('index.php/login'); ?>"><a href='<?php echo base_url('index.php/login'); ?>'>Acceso Usuario</a></button></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
