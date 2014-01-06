@@ -79,10 +79,10 @@
             </table>
     </div>
 
-    <?php
+   <center><?php
          echo form_open(base_url($url_volver));
          echo form_submit($buttonvolver);
          echo form_close();
-    ?>
+    ?></center>
 </div>
 

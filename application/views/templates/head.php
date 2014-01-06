@@ -63,7 +63,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/Plataforma_Administracion_Evaluaciones/index.php/asignatura">Asignaturas</a></li>
                         <li><a href="/Plataforma_Administracion_Evaluaciones/index.php/academico">Academicos</a></li>
-                        <li><a href="#">Central de Apuntes</a></li>
+                        <li><a href="/Plataforma_Administracion_Evaluaciones/index.php/login">Central de Apuntes</a></li>
                         <li><a href='http://www.utem.cl'>Intranet</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->

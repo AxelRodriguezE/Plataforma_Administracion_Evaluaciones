@@ -109,6 +109,13 @@
                                 $url_pauta = $query->archivo_pauta;
                                 echo anchor($url_pauta, 'DESCARGAR PAUTA', 'title="Link descarga Pauta de la Evaluacion"');
                             }
+                            
+                             $url_volver = "index.php/evaluacion";
+                             $buttonvolver = array(
+                            'class' => 'btn btn-success',
+                            'value' => 'Volver'
+                              );
+
                             ?>
                         </td>
                     </tr>
@@ -119,5 +126,10 @@
             </tbody>
         </table>
     </div>
+    <center><?php
+         echo form_open(base_url($url_volver));
+         echo form_submit($buttonvolver);
+         echo form_close();
+    ?></center>
 
 </div>
