@@ -43,6 +43,14 @@
                 'class' => 'btn btn-primary',
                 'value' => 'Agregar'
             );
+
+             $url_volver = "index.php/asignatura";
+             $buttonvolver = array(
+                            'class' => 'btn btn-success',
+                            'value' => 'Volver'
+                        );
+
+
             echo form_open(base_url('/index.php/asignatura/agregar'));
             echo form_fieldset('Nueva Asignatura');
                 echo form_label('Codigo Asignatura:');
@@ -60,5 +68,15 @@
             echo form_fieldset_close();
             echo form_close();
         ?>
+
+<br></br>
+ <?php
+         echo form_open(base_url($url_volver));
+         echo form_submit($buttonvolver);
+         echo form_close();
+    ?>
+
     </div>
+
+
 </div>
