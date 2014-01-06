@@ -22,9 +22,11 @@ class evaluacion extends CI_Controller {
                     $this->load->helper('url');
                     $data['title'] = 'Index';
                     $this->load->model('evaluacion_model');
-                    $query = $this->evaluacion_model->mostrar();
+                    $academico_eval = $this->evaluacion_model->getIDAcademico('130311334');
+                    $id_academico_eval = $academico_eval->id_academico;
+                    $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
                     $this->load->view('templates/head', compact('data'));
-                    $this->load->view('academico/evaluaciones', compact("query"));
+                    $this->load->view('academico/evaluaciones', compact("query", "id_academico_eval"));
                     $this->load->view('templates/footer'); 
                 }
                 else
@@ -34,7 +36,7 @@ class evaluacion extends CI_Controller {
                 echo 'Usted no tiene los permisos para acceder! >:D';
         }
 
-        public function agregar()
+        public function agregar($id = NULL)
         {
             if($this->input->post())
             {
@@ -57,11 +59,12 @@ class evaluacion extends CI_Controller {
             {
     //                $academico_evaluacion = $this->evaluacion_model->getAcademico_evaluacion();
     //                $asignatura_evaluacion = $this->evaluacion_model->getAsignatura_evaluacion();
-                $query_asignatura = $this->evaluacion_model->mostrar_asignatura();
-                $query_academico = $this->evaluacion_model->mostrar_academico();
+                $query_asignatura = $this->evaluacion_model->mostrar_asignatura_ac($id);
+                var_dump($query_asignatura);
+                //$query_academico = $this->evaluacion_model->mostrar_academico();
                 $query_tipo = $this->evaluacion_model->mostrar_tipo();
                 $this->load->view('templates/head');
-                $this->load->view('academico/agregar_evaluacion', compact("query_tipo", "query_asignatura", "query_academico"));
+                $this->load->view('academico/agregar_evaluacion', compact("query_tipo", "query_asignatura", "query_academico", "id"));
                 $this->load->view('templates/footer');   
             }
 

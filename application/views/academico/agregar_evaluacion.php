@@ -35,6 +35,12 @@
                 'name' => 'observacion',
                 'class' => 'form-control'
             );
+            $academico = array(
+                'type' => 'hidden',
+                'id' => 'academico',
+                'name' => 'academico',
+                'value' => $id
+            );
 
             $button = array(
                 'class' => 'btn btn-primary',
@@ -50,15 +56,15 @@
                                 //enviar oculto nombre del academico logueado
                 
                 //rescatar la asignatura que se esta ingresando una evaluacion
-                echo form_label('Seleccione un Académico:');
-                $datos_academico = array(
-                    );
-                foreach($query_academico as $query_academico){
-                        $datos_academico[$query_academico->id_academico] =  $query_academico->nombre_academico .' '. $query_academico->apellidos_academico;
-                }
-                echo "<br>";
-                echo form_dropdown('academico',  $datos_academico);
-                echo "<br>";
+//                echo form_label('Seleccione un Académico:');
+//                $datos_academico = array(
+//                    );
+//                foreach($query_academico as $query_academico){
+//                        $datos_academico[$query_academico->id_academico] =  $query_academico->nombre_academico .' '. $query_academico->apellidos_academico;
+//                }
+//                echo "<br>";
+//                echo form_dropdown('academico',  $datos_academico);
+//                echo "<br>";
                 
                 echo form_label('Seleccione una Asignatura:');
                 $datos_asignatura = array(
@@ -91,6 +97,7 @@
                 echo form_input($ponderacion);
                 echo form_label('Observaciones');
                 echo form_input($observacion);
+                echo form_input($academico);
                 echo form_label('');
                 echo "<br>";
                 echo form_submit($button);

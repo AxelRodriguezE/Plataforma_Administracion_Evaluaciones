@@ -15,7 +15,7 @@
             <tbody>
                 <?php
                     date_default_timezone_set('UTC');
-                    $url_agregar = "index.php/evaluacion/agregar/";
+                    $url_agregar = "index.php/evaluacion/agregar/".$id_academico_eval;
                     $buttonagregar = array(
                             'class' => 'btn btn-warning',
                             'value' => 'Añadir (+)'

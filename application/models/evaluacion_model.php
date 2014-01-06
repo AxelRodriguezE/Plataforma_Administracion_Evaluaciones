@@ -40,6 +40,13 @@ class evaluacion_model extends CI_Model
                 $query_asignatura = $this->db->SELECT('*')->FROM('asignatura')->get();
                 return $query_asignatura->result();
         }
+        
+        public function mostrar_asignatura_ac($id)
+        {
+                $query_asignatura = $this->db->SELECT('*')->FROM('asignatura')->where('academico_asignatura', $id)->get();
+                return $query_asignatura->result();
+        }
+
 
         public function mostrar_academico()
         {
@@ -50,6 +57,12 @@ class evaluacion_model extends CI_Model
 	public function mostrar()
 	{
 		$query = $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->ORDER_BY('fecha_evaluacion', 'DESC')->get();
+                return $query->result();
+	}
+        
+        public function mostrar_x_rut($id)
+	{
+		$query = $this->db->select('*')->from('evaluacion')->join('academico', 'evaluacion.academico_evaluacion = academico.id_academico')->join('asignatura', 'evaluacion.asignatura_evaluacion = asignatura.id_asignatura')->join('tipo_evaluacion', 'evaluacion.tipo_evaluacion = tipo_evaluacion.id_tipo')->where('academico_evaluacion', $id)->ORDER_BY('fecha_evaluacion', 'DESC')->get();
                 return $query->result();
 	}
         
@@ -92,6 +105,12 @@ class evaluacion_model extends CI_Model
         {
              return $this->db->select('MAX(id_pauta) as id_pauta')->from('pauta')->get()->row();
         }
+        
+        public function getIDAcademico($rut)
+        {
+             return $this->db->select('*')->from('academico')->where('rut_academico', $rut)->get()->row();
+        }
+
         
         public function insertar_pauta($new_pauta)
         {
