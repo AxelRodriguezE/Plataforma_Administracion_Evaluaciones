@@ -1,3 +1,11 @@
+<div class="col-lg-12">
+        <h3 class="text-info" align="center">Registro de Evaluaciones</h3>
+        <p align="center"><b>Escuela de Informática</b></p>
+        <p align="center"><b>Universidad Tecnológica Metropolitana</b></p>
+        <br>
+    </div>
+
+
 <div class="container">
         <div class="panel panel-info">
             <div class="panel-heading"><h4>Agregar Evaluación</h4></div>
@@ -89,6 +97,13 @@
                 foreach($query_tipo as $query_tipo){
                         $datos_tipo[$query_tipo->id_tipo] =  $query_tipo->nombre_tipo;
                 }
+
+                 $url_volver = "index.php/evaluacion";
+                 $buttonvolver = array(
+                            'class' => 'btn btn-success',
+                            'value' => 'Volver'
+                        );
+
                 echo "<br>";
                 echo form_dropdown('tipo',  $datos_tipo);
                 echo "<br>";
@@ -107,4 +122,10 @@
                 </div>
         </div>
     </div>
+    <center><?php
+         echo form_open(base_url($url_volver));
+         echo form_submit($buttonvolver);
+         echo form_close();
+    ?>
+</center>
 </div>

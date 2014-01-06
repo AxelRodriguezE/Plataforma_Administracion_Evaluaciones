@@ -1,3 +1,10 @@
+<div class="col-lg-12">
+        <h3 class="text-info" align="center">Registro de Evaluaciones</h3>
+        <p align="center"><b>Escuela de Informática</b></p>
+        <p align="center"><b>Universidad Tecnológica Metropolitana</b></p>
+        <br>
+    </div>
+
 <div class="container">
         <div class="panel panel-success">
         <div class="panel-heading"><h4>Editar Evaluación</h4></div>
@@ -57,6 +64,13 @@
             'class' => 'btn btn-primary',
             'value' => 'Modificar'
         );
+
+             $url_volver = "index.php/evaluacion";
+             $buttonvolver = array(
+                            'class' => 'btn btn-success',
+                            'value' => 'Volver'
+                        );
+
         echo '<br>';
 echo form_open(base_url('/index.php/evaluacion/editar'));
 ?>
@@ -102,4 +116,9 @@ echo form_open(base_url('/index.php/evaluacion/editar'));
                 </div>
         </div>
     </div>
+    <center><?php
+         echo form_open(base_url($url_volver));
+         echo form_submit($buttonvolver);
+         echo form_close();
+    ?></center>
 </div>

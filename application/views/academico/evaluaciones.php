@@ -1,3 +1,10 @@
+<div class="col-lg-12">
+        <h3 class="text-info" align="center">Registro de Evaluaciones</h3>
+        <p align="center"><b>Escuela de Informática</b></p>
+        <p align="center"><b>Universidad Tecnológica Metropolitana</b></p>
+        <br>
+    </div>
+
 <div class="container">
     <div class="col-md-12">
         <table class="table table-striped">
