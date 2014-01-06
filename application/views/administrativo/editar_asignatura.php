@@ -36,7 +36,12 @@
             'value' => $nombre_asignatura
         );
           
-        
+        $datos_academico = array(
+                    " " => "Seleccione el Academico"
+                    );
+                foreach($query_academico as $query_academico){
+                        $datos_academico[$query_academico->id_academico] =  $query_academico->nombre_academico .' '. $query_academico->apellidos_academico;
+                }
         
         $button = array(
             'class' => 'btn btn-primary',
@@ -50,15 +55,7 @@
                         );
                  
         echo form_open(base_url('/index.php/asignatura/editar'));
-        echo form_fieldset('Editar Asignatura');
-        ?>
-            <h4>
-                <?php echo 'Asignatura creada por ' ?>
-                <b class="text-danger"><?php echo $query->academico_asignatura?></b>
-               
-                <br><br>
-                </h4>
-                <?php 
+        echo form_fieldset('Editar Asignatura');        
                 echo '<br>';
             echo form_label('Codigo Asignatura:');
             echo form_input($codigo);
@@ -68,6 +65,10 @@
             echo form_input($nombre);
             echo form_input($id);
             echo '<br>';
+            echo form_label('Academico: ');
+            echo form_dropdown('academico',  $datos_academico);
+            echo "<br>";
+            echo "<br>";
             echo form_submit($button);
         echo form_fieldset_close();
         echo form_close();

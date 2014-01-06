@@ -116,7 +116,7 @@ class academico extends CI_Controller {
             }
             else
             {
-                $query = $this->evaluacion_model->mostrar_asign($id);
+                $query = $this->academico_model->mostrar_asign($id);
                 if($query)
                 {
                     $this->load->view('templates/head');
@@ -124,7 +124,7 @@ class academico extends CI_Controller {
                     $this->load->view('templates/footer');
                 }
                 else
-                    $query = $this->evaluacion_model->mostrar_basic($id);
+                    $query = $this->academico_model->mostrar_basic($id);
                     if($query)
                     {
                         $this->load->view('templates/head');
