@@ -51,6 +51,12 @@ class academico_model extends CI_Model
 	{
 		return $this->db->select('*')->from('academico')->where('id_academico', $id)->get()->row();
 	}
+        
+        public function getIDAcademico()
+        {
+             return $this->db->select('MAX(id_academico) as id_academico')->from('academico')->get()->row();
+        }
+
                         
         public function eliminar($id)
         {

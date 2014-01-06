@@ -19,28 +19,23 @@
                 'name' => 'nombre',
                 'class' =>'form-control'
             );
-
-                $datos_academico = array(
-                    " " => "Seleccione el Academico"
-                    );
-                foreach($query_academico as $query_academico){
-                        $datos_academico[$query_academico->id_academico] =  $query_academico->nombre_academico .' '. $query_academico->apellidos_academico;
-                }
             
-//             $academico = array(
-//                'type' => 'text',
-//                'id' => 'academico',
-//                'name' => 'academico',
-//                'class' =>'form-control'
-//                               
-//            );
+            $id_del_academico = $el_academico->id_academico;
+            
+            $academico = array(
+                'type' => 'hidden',
+                'id' => 'academico',
+                'name' => 'academico',
+                'value' => $id_del_academico
+            );
             
             $button = array(
                 'class' => 'btn btn-primary',
                 'value' => 'Agregar'
             );
+            $titulo_form = 'Asignando asignatura al académico: ' . $datos_academico->nombre_academico . ' ' . $datos_academico->apellidos_academico;
             echo form_open(base_url('/index.php/asignatura/agregar'));
-            echo form_fieldset('Nueva Asignatura');
+            echo form_fieldset($titulo_form);
                 echo form_label('Codigo Asignatura:');
                 echo form_input($codigo);
                 echo form_label('Seccion:');
@@ -48,8 +43,7 @@
                 echo form_label('Nombre Asignatura:');
                 echo form_input($nombre);
                 echo "<br>";
-                echo form_label('Academico: ');
-                echo form_dropdown('academico',  $datos_academico);
+                echo form_input($academico);
                 echo "<br>";
                 echo "<br>";
                 echo form_submit($button);

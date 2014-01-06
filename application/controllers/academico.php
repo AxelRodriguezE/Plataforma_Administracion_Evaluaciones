@@ -34,6 +34,36 @@ class academico extends CI_Controller {
             }
 	}
 	
+        public function asignar_asignatura()
+	{
+            if($this->input->post())
+            {
+                $this->load->model('academico_model');
+                
+                $academico = array(
+                    'nombre_academico' => $this->input->post('nombre', true),
+                    'apellidos_academico' => $this->input->post('apellidos', true),
+                    'rut_academico' => $this->input->post('rut', true),
+                );
+                if($this->academico_model->insertar($academico))
+                    $el_academico = $this->academico_model->getIDAcademico();
+                    $id_del_academico = $el_academico->id_academico;
+                    $datos_academico = $this->academico_model->getAcademico($id_del_academico);
+//                var_dump($el_academico);
+//                var_dump($datos_academico);
+                    //$id_academico = $el_academico->id_academico;
+                    $this->load->view('templates/head');
+                    $this->load->view('administrativo/asignar_asignatura', compact("el_academico", "datos_academico"));
+                    $this->load->view('templates/footer');
+            }
+            else
+            {
+                $this->load->view('templates/head');
+                $this->load->view('administrativo/agregar_asignatura');
+                $this->load->view('templates/footer');   
+            }
+	}
+        
 	public function editar($id = NULL)
 	{
             $this->load->model('academico_model');

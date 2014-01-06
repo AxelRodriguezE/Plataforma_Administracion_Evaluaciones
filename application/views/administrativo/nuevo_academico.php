@@ -22,12 +22,13 @@
                 'name' => 'rut',
                 'class' =>'form-control'
             );
-            $button = array(
+            //$url_agregar = "index.php/asignatura/asignar_asignatura";
+            $buttonagregar = array(
                 'class' => 'btn btn-primary',
-                'value' => 'Agregar'
+                'value' => 'Agregar asignatura'
             );
             echo '<br>';
-            echo form_open(base_url('/index.php/academico/agregar'));
+            echo form_open(base_url('/index.php/academico/asignar_asignatura'));
                 echo form_label('Nombre:');
                 echo form_input($nombre);
                 echo form_label('Apellidos:');
@@ -35,7 +36,7 @@
                 echo form_label('RUT:');
                 echo form_input($rut);
                 echo "<br>";
-                echo form_submit($button);
+                echo form_submit($buttonagregar);
             echo form_fieldset_close();
             echo form_close();
             echo '<br>';
