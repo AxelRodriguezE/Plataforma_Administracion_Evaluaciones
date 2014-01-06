@@ -30,7 +30,7 @@ class login extends CI_Controller {
         if($auth)
         {
             //echo 'entro a auth';
-            $docente = $this->ws_dirdoc->getAcademico('104716482');//ingresar rut academico para probar...
+            $docente = $this->ws_dirdoc->getAcademico('55850402');//ingresar rut academico para probar...
             if(isset($docente))
             {
                 $tipo = $docente->tipo;
@@ -39,6 +39,7 @@ class login extends CI_Controller {
                     //echo 'entro a jerarquia';
                     $jerarquia = $docente->jerarquia;
                     if ($jerarquia == "ASISTENTE") {
+                        $_SESSION['jerarquia'] = $jerarquia;
                         //echo 'entro como asistente';
                         $data['title'] = 'Index';
                         $this->load->model('asignatura_model');

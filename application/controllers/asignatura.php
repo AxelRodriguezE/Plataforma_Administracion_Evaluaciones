@@ -9,8 +9,7 @@ class asignatura extends CI_Controller {
 
         public function index()
 	{
-            echo $_SESSION['rut'];
-            if(isset($_SESSION['rut']))
+            if(isset($_SESSION['rut']) && isset($_SESSION['jerarquia']))
             {
 		$data['title'] = 'Index';
 		$this->load->model('asignatura_model');

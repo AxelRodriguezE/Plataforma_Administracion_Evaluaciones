@@ -19,6 +19,10 @@ class evaluacion extends CI_Controller {
                 $id_academico_eval = $academico_eval->id_academico;
                 $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
                 $this->load->view('templates/head', compact('data'));
+                if(isset($_SESSION['jerarquia']))
+                {
+                    $this->load->view('templates/menu_admin');
+                }
                 $this->load->view('academico/evaluaciones', compact("query", "id_academico_eval"));
                 $this->load->view('templates/footer'); 
             }

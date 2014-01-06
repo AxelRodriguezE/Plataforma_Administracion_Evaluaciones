@@ -1,16 +1,28 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class academico extends CI_Controller {
+    
+        public function __construct(){
+            parent::__construct();
+            session_start();
+        }
 
         public function index()
-	{       
-		$data['title'] = 'Index';
+	{
+            //echo $_SESSION['rut'];
+            if(isset($_SESSION['rut']) && isset($_SESSION['jerarquia']))
+            {
+                $data['title'] = 'Index';
 		$this->load->model('academico_model');
 		$query = $this->academico_model->mostrar();
 		$this->load->view('templates/head', compact('data'));
                 $this->load->view('templates/menu_admin');
 		$this->load->view('administrativo/academicos', compact("query", "estudiante"));
 		$this->load->view('templates/footer');
+            }
+            else{
+                echo 'Usted no tiene los permisos para acceder! >:D';
+            }
         }
 	
 	public function agregar()

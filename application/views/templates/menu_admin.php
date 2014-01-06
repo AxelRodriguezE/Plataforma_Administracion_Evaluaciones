@@ -7,6 +7,7 @@
                 <?php
                     $url_academico = "index.php/academico";
                     $url_asignatura = "index.php/asignatura";
+                    $url_evaluacion = "index.php/evaluacion";
                     $buttonacademico = array(
                         'class' => 'btn btn-link',
                         'value' => 'Administrar Academicos'
@@ -15,15 +16,26 @@
                         'class' => 'btn btn-link',
                         'value' => 'Administrar Asignaturas'
                         );
+                    $buttonevaluacion = array(
+                        'class' => 'btn btn-link',
+                        'value' => 'Mis Evaluaciones'
+                    )
                 ?>
-                <div class="col-md-6" align="right">
+                <div class="col-md-4" align="right">
                     <?php 
                         echo form_open(base_url($url_academico));
                             echo form_submit($buttonacademico);
                         echo form_close();
                     ?>
                 </div>
-                <div class="col-md-6" align="left">
+                <div class="col-md-4" align="center">
+                    <?php
+                        echo form_open(base_url($url_evaluacion));
+                            echo form_submit($buttonevaluacion);
+                        echo form_close();
+                    ?>
+                </div>
+                <div class="col-md-4" align="left">
                     <?php
                         echo form_open(base_url($url_asignatura));
                             echo form_submit($buttonasignatura);
