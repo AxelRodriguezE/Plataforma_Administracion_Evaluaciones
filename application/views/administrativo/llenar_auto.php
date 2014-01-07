@@ -5,6 +5,8 @@
         <p align="center"><b>Escuela de Informática</b></p>
         <p align="center"><b>Universidad Tecnológica Metropolitana</b></p>
         <br>
+        <p align="center">Debe indicar el Rut del Académico, el Semestre y Año</p>
+        <p align="center">del cual desea autocompletar las Asignaturas</p>
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-4">

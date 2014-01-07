@@ -15,7 +15,7 @@ class evaluacion extends CI_Controller {
                 $this->load->helper('url');
                 $data['title'] = 'Index';
                 $this->load->model('evaluacion_model');
-                $academico_eval = $this->evaluacion_model->getIDAcademico('104716482');
+                $academico_eval = $this->evaluacion_model->getIDAcademico('55850402');
                 $id_academico_eval = $academico_eval->id_academico;
                 $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
                 $this->load->view('templates/head', compact('data'));
@@ -25,7 +25,21 @@ class evaluacion extends CI_Controller {
                     $this->load->view('templates/menu_admin');
                 }
                 $this->load->view('academico/evaluaciones', compact("query", "id_academico_eval"));
-                $this->load->view('templates/footer'); 
+                $this->load->view('templates/footer');
+//                $this->load->helper('url');
+//                $data['title'] = 'Index';
+//                $this->load->model('evaluacion_model');
+//                $rut_a = (int) $_SESSION['rut'];
+//                echo $rut_a;
+//                $academico_eval = $this->evaluacion_model->getIDAcademico($rut_a);
+//                $id_academico_eval = $academico_eval->id_academico;
+//                echo $id_academico_eval;
+//                $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
+//                $this->load->view('templates/head', compact('data'));
+//                $this->load->view('templates/login_head');
+                
+//                $this->load->view('academico/evaluaciones', compact("query", "id_academico_eval"));
+//                $this->load->view('templates/footer'); 
             }
             else{
                 $this->load->view('templates/head', compact('data'));
