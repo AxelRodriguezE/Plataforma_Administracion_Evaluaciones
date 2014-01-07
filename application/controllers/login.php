@@ -27,6 +27,15 @@ class login extends CI_Controller {
         //echo $docente->tipo;
         $auth = $this->ws_dirdoc->autenticar($rut, $pass);
         //¿QUE HACER CUANDO TIRE ERROR?? 
+//        
+//        $cursos = $this->ws_dirdoc->cursos_semestre_anio('55850402', '2', '2013');
+//        var_dump($cursos);
+//        echo '<br>';
+//        foreach ($cursos as $cursos):
+//            $oli = $cursos->seccion;
+//            echo $oli; 
+//        endforeach;
+//        
         if($auth)
         {
             //echo 'entro a auth';
@@ -54,7 +63,11 @@ class login extends CI_Controller {
                         $this->load->view('templates/footer');
                     }
                     else{
-                        echo 'Solo acceso a Jefes de Carrera';
+                        $this->load->view('templates/head', compact('data'));
+                        $this->load->view('templates/public_head');
+                        $this->load->view('templates/error_usuario3');
+                        $this->load->view('login');
+                        $this->load->view('templates/footer');
                     }
 
                 }
@@ -73,23 +86,36 @@ class login extends CI_Controller {
                         $this->load->view('templates/footer');    
                     }
                     else{
-                        echo 'Solo acceso a Académicos';
+                        $this->load->view('templates/head', compact('data'));
+                        $this->load->view('templates/public_head');
+                        $this->load->view('templates/error_usuario2');
+                        $this->load->view('login');
+                        $this->load->view('templates/footer');
                     }
                 }
             }
             else {
-                echo 'Acceso denegado: El usuario debe ser Académico';
+                $this->load->view('templates/head', compact('data'));
+                $this->load->view('templates/public_head');
+                $this->load->view('templates/error_usuario2');
+                $this->load->view('login');
+                $this->load->view('templates/footer');
             }
 
         }
         else{
-            echo 'Usted no tiene los permisos para acceder! >:D';   
+            $this->load->view('templates/head', compact('data'));
+            $this->load->view('templates/public_head');
+            $this->load->view('templates/error_usuario');
+            $this->load->view('login');
+            $this->load->view('templates/footer');
         }
     }     
 
     public function cerrarsesion()
     {
         session_destroy();
+        redirect(base_url('index.php/'));
     }   
 }  
 ?>
