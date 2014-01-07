@@ -66,9 +66,7 @@
                         <li><a href="http://centraldigital.informatica.utem.cl">Central de Apuntes</a></li>
                         <li><button type = "button"  class = "btn btn-default navbar-btn" href="<?php echo base_url('index.php/login'); ?>"><a href='<?php echo base_url('index.php/login'); ?>'>Acceso Usuario</a></button></li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </nav>
-        </div>
+
         <?php
             date_default_timezone_set('UTC');
         ?>                    

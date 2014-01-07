@@ -14,6 +14,7 @@ class publico extends CI_Controller {
 		$query = $this->evaluacion_model->mostrar_por_asignatura($id_asignatura);
                 $query_asignatura = $this->evaluacion_model->mostrar_asignatura();
 		$this->load->view('templates/head', compact('data'));
+        $this->load->view('templates/public_head');
 		$this->load->view('publico/inicio', compact("query", "query_asignatura"));
 		$this->load->view('templates/footer');
             }
@@ -22,6 +23,7 @@ class publico extends CI_Controller {
 		$query = $this->evaluacion_model->mostrar();
                 $query_asignatura = $this->evaluacion_model->mostrar_asignatura();
 		$this->load->view('templates/head', compact('data'));
+        $this->load->view('templates/public_head');
 		$this->load->view('publico/inicio', compact("query", "query_asignatura"));
 		$this->load->view('templates/footer');
             }
