@@ -23,7 +23,6 @@ class login extends CI_Controller {
         $_SESSION['rut'] = $rut;
         $pass = hash('sha256', strtoupper($password));
         $this->load->library('ws_dirdoc');
-        //var_dump($docente);
         //echo $docente->tipo;
         $auth = $this->ws_dirdoc->autenticar($rut, $pass);
         //¿QUE HACER CUANDO TIRE ERROR?? 
@@ -31,6 +30,7 @@ class login extends CI_Controller {
         {
             //echo 'entro a auth';
             $docente = $this->ws_dirdoc->getAcademico('55850402');//ingresar rut academico para probar...
+            //var_dump($docente);
             if(isset($docente))
             {
                 $tipo = $docente->tipo;
