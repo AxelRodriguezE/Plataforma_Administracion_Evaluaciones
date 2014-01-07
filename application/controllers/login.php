@@ -12,6 +12,7 @@ class login extends CI_Controller {
 	{  
             $data['title'] = 'Index';
             $this->load->view('templates/head', compact('data'));
+            $this->load->view('templates/public_head');
             $this->load->view('login');
             $this->load->view('templates/footer');
         }
@@ -34,6 +35,8 @@ class login extends CI_Controller {
             if(isset($docente))
             {
                 $tipo = $docente->tipo;
+                $nombre = $docente->alias;
+                $_SESSION['nombre'] = $nombre;
                 if(isset($docente->jerarquia) && $tipo == "PROF")
                 {
                     //echo 'entro a jerarquia';
@@ -45,6 +48,7 @@ class login extends CI_Controller {
                         $this->load->model('asignatura_model');
                         $query = $this->asignatura_model->mostrar();
                         $this->load->view('templates/head', compact('data'));
+                        $this->load->view('templates/login_head');
                         $this->load->view('templates/menu_admin');
                         $this->load->view('administrativo/asignaturas', compact("query"));
                         $this->load->view('templates/footer');
@@ -81,6 +85,11 @@ class login extends CI_Controller {
         else{
             echo 'Usted no tiene los permisos para acceder! >:D';   
         }
-    }        
+    }     
+
+    public function cerrarsesion()
+    {
+        session_destroy();
+    }   
 }  
 ?>
