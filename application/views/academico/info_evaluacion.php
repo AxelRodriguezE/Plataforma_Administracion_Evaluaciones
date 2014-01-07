@@ -65,7 +65,8 @@
                                             'type' => 'text',
                                             'id' => 'pauta',
                                             'name' => 'pauta',
-                                            'class' => 'form-control'
+                                            'class' => 'form-control',
+                                            'value' => 'http://'
                                         );
                                         $titulo = array(
                                             'type' => 'hidden',
@@ -90,6 +91,7 @@
                                             'value' => 'Subir'
                                         );
                                         echo form_open(base_url($url));
+                                            echo 'Debe contener prefijo http://';
                                             echo form_input($pauta);
                                             echo form_input($titulo);
                                             echo form_input($id_eval);

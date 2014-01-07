@@ -32,7 +32,7 @@
         );
         $button = array(
             'class' => 'btn btn-primary',
-            'value' => 'Ingresar'
+            'value' => 'Autocompletar'
         );
         $url_volver = "index.php/asignatura";
         $buttonvolver = array(
