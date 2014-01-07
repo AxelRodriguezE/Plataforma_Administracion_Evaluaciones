@@ -64,7 +64,7 @@
                         <li><a href="http://alumnos.informatica.utem.cl/~ibriones/Web-Informatica/webinfo">Web de Informatica</a></li>
                         <li><a href="http://www.utem.cl">Web UTEM</a></li>
                         <li><a href="http://centraldigital.informatica.utem.cl">Central de Apuntes</a></li>
-                        <li><button type = "button"  class = "btn btn-default navbar-btn" href="<?php echo base_url('index.php/login'); ?>"><a href='<?php echo base_url('index.php/login'); ?>'>Acceso Usuario</a></button></li>
+                        <li><a href="<?php echo base_url('index.php/login'); ?>"><button type="button"  class="btn btn-default navbar-btn">Acceso Usuario</button></a></li>
                     </ul>
 
         <?php

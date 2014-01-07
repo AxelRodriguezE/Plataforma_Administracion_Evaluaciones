@@ -6,7 +6,7 @@
         <br>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <?php
                 $button = array(
                     'class' => 'btn btn-primary',
@@ -32,7 +32,7 @@
 
             ?>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <table class="table table-striped">
                 <thead>
                     <tr>

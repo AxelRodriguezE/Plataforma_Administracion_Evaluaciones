@@ -22,10 +22,18 @@ class login extends CI_Controller {
         $password = $this->input->post('password', true);
         $rut = $this->input->post('rut', true);
         $_SESSION['rut'] = $rut;
+//        $rut_login = (int)$_SESSION['rut'];
+//        echo $rut_login;
+        //var_dump($_SESSION['rut']);
         $pass = hash('sha256', strtoupper($password));
         $this->load->library('ws_dirdoc');
         //echo $docente->tipo;
         $auth = $this->ws_dirdoc->autenticar($rut, $pass);
+        
+//        $rut_login = $_SESSION['rut'];
+//        var_dump($rut_login);
+        
+        
         //¿QUE HACER CUANDO TIRE ERROR?? 
 //        
 //        $cursos = $this->ws_dirdoc->cursos_semestre_anio('55850402', '2', '2013');
@@ -39,7 +47,7 @@ class login extends CI_Controller {
         if($auth)
         {
             //echo 'entro a auth';
-            $docente = $this->ws_dirdoc->getAcademico('55850402');//ingresar rut academico para probar...
+            $docente = $this->ws_dirdoc->getAcademico('104716482');//ingresar rut academico para probar...
             //var_dump($docente);
             if(isset($docente))
             {
@@ -78,7 +86,7 @@ class login extends CI_Controller {
                         $this->load->helper('url');
                         $data['title'] = 'Index';
                         $this->load->model('evaluacion_model');
-                        $academico_eval = $this->evaluacion_model->getIDAcademico('55850402');
+                        $academico_eval = $this->evaluacion_model->getIDAcademico('104716482');
                         $id_academico_eval = $academico_eval->id_academico;
                         $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
                         $this->load->view('templates/head', compact('data'));

@@ -15,7 +15,7 @@ class evaluacion extends CI_Controller {
                 $this->load->helper('url');
                 $data['title'] = 'Index';
                 $this->load->model('evaluacion_model');
-                $academico_eval = $this->evaluacion_model->getIDAcademico('55850402');
+                $academico_eval = $this->evaluacion_model->getIDAcademico('104716482');
                 $id_academico_eval = $academico_eval->id_academico;
                 $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
                 $this->load->view('templates/head', compact('data'));
@@ -173,14 +173,12 @@ class evaluacion extends CI_Controller {
 
         public function examinarEvaluacion_publico($id = NULL)
         {
-            if(isset($_SESSION['rut']))
-            {
                 $this->load->model('evaluacion_model');
                 $query = $this->evaluacion_model->getEvaluacion_cp($id);
                 if($query)
                 {
                     $this->load->view('templates/head');
-                    $this->load->view('templates/login_head');
+                    $this->load->view('templates/public_head');
                     $this->load->view('publico/info_evaluacion', compact('query', 'id'));
                     $this->load->view('templates/footer');
                 }
@@ -190,20 +188,13 @@ class evaluacion extends CI_Controller {
                     if($query)
                     {
                         $this->load->view('templates/head');
-                        $this->load->view('templates/login_head');
+                        $this->load->view('templates/public_head');
                         $this->load->view('publico/info_evaluacion', compact('query', 'id'));
                         $this->load->view('templates/footer');
                     }
                     else
                         $this->load->view('error');
                 } 
-            }
-            else{
-                $this->load->view('templates/head', compact('data'));
-                $this->load->view('templates/public_head');
-                $this->load->view('templates/error_login');
-                $this->load->view('templates/footer');
-            }
         }
 
         public function eliminar()
