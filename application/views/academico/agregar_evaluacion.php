@@ -23,13 +23,15 @@
                 'type' => 'date',
                 'id' => 'fecha',
                 'name' => 'fecha',
-                'class' => 'form-control'
+                'class' => 'form-control',
+                'value' => 'dd-mm-aaaa'
             );
             $hora = array(
                 'type' => 'time',
                 'id' => 'hora',
                 'name' => 'hora',
-                'class' =>'form-control'
+                'class' =>'form-control',
+                'value' => 'HH:MM'
             );
             $ponderacion = array(
                 'type' => 'text',
