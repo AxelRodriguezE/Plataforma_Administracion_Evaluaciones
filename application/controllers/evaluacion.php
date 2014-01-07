@@ -15,7 +15,7 @@ class evaluacion extends CI_Controller {
                 $this->load->helper('url');
                 $data['title'] = 'Index';
                 $this->load->model('evaluacion_model');
-                $academico_eval = $this->evaluacion_model->getIDAcademico('55850402');
+                $academico_eval = $this->evaluacion_model->getIDAcademico($_SESSION['rut']);
                 $id_academico_eval = $academico_eval->id_academico;
                 $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
                 $this->load->view('templates/head', compact('data'));

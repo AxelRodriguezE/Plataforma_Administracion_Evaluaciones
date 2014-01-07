@@ -33,7 +33,6 @@ class login extends CI_Controller {
 //        $rut_login = $_SESSION['rut'];
 //        var_dump($rut_login);
         
-        
         //¿QUE HACER CUANDO TIRE ERROR?? 
 //        
 //        $cursos = $this->ws_dirdoc->cursos_semestre_anio('55850402', '2', '2013');
@@ -47,7 +46,7 @@ class login extends CI_Controller {
         if($auth)
         {
             //echo 'entro a auth';
-            $docente = $this->ws_dirdoc->getAcademico('55850402');//ingresar rut academico para probar...
+            $docente = $this->ws_dirdoc->getAcademico($_SESSION['rut']);//ingresar rut academico para probar...
             //var_dump($docente);
             if(isset($docente))
             {
@@ -86,7 +85,7 @@ class login extends CI_Controller {
                         $this->load->helper('url');
                         $data['title'] = 'Index';
                         $this->load->model('evaluacion_model');
-                        $academico_eval = $this->evaluacion_model->getIDAcademico('55850402');
+                        $academico_eval = $this->evaluacion_model->getIDAcademico($_SESSION['rut']);
                         $id_academico_eval = $academico_eval->id_academico;
                         $query = $this->evaluacion_model->mostrar_x_rut($id_academico_eval);
                         $this->load->view('templates/head', compact('data'));
